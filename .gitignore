@@ -7,3 +7,5 @@
 *.out
 *.synctex.gz
 *.toc
+./differential_geometry
+./phd_thesis

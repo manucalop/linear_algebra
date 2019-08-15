@@ -1,0 +1,64 @@
+\ProvidesPackage{packages}
+
+% Document type and style {{{
+
+\usepackage[english]{babel}%Language
+\usepackage[utf8]{inputenc}%Tildes
+\usepackage{subfiles}
+\usepackage{multicol}
+  \newcommand{\onlyinsubfile}[1]{#1}
+  \newcommand{\notinsubfile}[1]{}
+%}}}
+
+% Links{{{
+%For url: \hyperref{htto://www...}{texto}
+\usepackage{cite}
+\usepackage[colorlinks]{hyperref}
+\usepackage{color}
+\definecolor{darkred}{rgb}{0.5,0,0}   % 	rgb(100,0,0)
+\definecolor{darkgreen}{rgb}{0,0.5,0}	% 	rgb(0,100,0)
+\definecolor{darkblue}{rgb}{0,0.2,0.4}%		rgb(0,50,90)
+\hypersetup{
+    colorlinks=true,%
+    citecolor=darkblue,%
+    filecolor=darkgreen,%
+    linkcolor=darkblue,%
+    urlcolor=darkred
+}
+%}}}
+
+% Page configuration {{{
+
+
+%}}}
+
+% Math {{{
+\usepackage{mathtools}%Librería matemática
+\usepackage{amssymb}%Símbolos matemáticos
+\usepackage{cancel}%Para usar el cancelto
+\usepackage[]{algorithm2e}
+\usepackage{siunitx}
+\usepackage{enumitem}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{mydef}{Definition}
+\newtheorem{myex}{Example}
+%}}}
+
+% Graphics{{{
+
+\usepackage{graphicx}%Graphics
+\graphicspath{{./img/}}
+\usepackage{epstopdf}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usepackage{tikz-cd}
+% \usetikzlibrary{shapes,arrows}
+\usepackage{subcaption}
+\usepackage[capitalise]{cleveref}
+\crefformat{equation}{(#2#1#3)}
+%}}}

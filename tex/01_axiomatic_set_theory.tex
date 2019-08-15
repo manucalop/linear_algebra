@@ -1,0 +1,457 @@
+\documentclass[root.tex]{subfiles}
+\begin{document}
+\chapter{Axiomatic set theory}
+
+We start our study with set theory because any space is a set of points. But what precisely is a set? Well, one can think of a set as a collection of elements but that raises the question: what a collection is and what elements are? So certainly we need to do better and, as a fundamental problem, if we start writing a book about mathematics whose pages are all empty yet, what could the first definition be? For a definition you need notions that you already have, in order to define a new notion but, if you don't have any notion yet, how do you start? The trick is to start axiomatically, and so we'll have to write axiomatic set theory but then that raises the question, in what language could you possibly do that? Then, we need another building block that is called standard propositional logic, which will allow us to write the axioms of set theory. 
+
+\section{Propositional logic}
+The key notion of propositional logic is a proposition. 
+\begin{mydef}
+  A \textbf{proposition} $p$ is a variable that can take the values true or false. No other. 
+\end{mydef}
+In particular, it is not the task of propositional logic to decide whether a complex statement of the form: \emph{there is extra-terrestrial life} is true or not. Propositional logic already deals with the complete proposition and just assumes that is either true or false. Certainly, one can build new propositions from given ones by means of \textbf{logical operators}.
+
+Logical operators come in different forms. The simplest is unary operators. A unary operator takes one proposition and makes from it a new proposition.
+
+    \begin{table}[h]
+      \centering
+      \begin{tabular}{c||c|c|c|c}
+        $p$ & $\neg p$ & $\mathrm{id}(p)$ & $\top p$ & $\bot p$ \\
+        \hline
+        \rule{0pt}{12pt} t & f & t & t & f\\
+                         f & t & f & t & f
+      \end{tabular}\qquad
+      \begin{tabular}{ll}
+        $\neg$ & NOT\\
+        $id$   & Identity\\
+        $\top$ & Tautology\\
+        $\bot$ & Contradiction
+      \end{tabular}
+      \caption{Unary operators}
+    \end{table}
+One can quickly check that, if p can be true or false, these operators cover all the possibilities to define a unary operator. The next step are binary operators, we'll draw some interesting ones in the following table:
+
+    \begin{table}[h]
+      \centering
+      \begin{tabular}{c|c||c|c|c|c}
+        $p$ & $q$ & $p\land q$ & $\cdots$ & $p \Rightarrow q$ & $p \Leftrightarrow q$ \\
+        \hline
+          \rule{0pt}{12pt} t & t & t &  & t & t\\
+                           t & f & f &  & f & f\\
+                           f & t & f &  & t & f\\
+                           f & f & f &  & t & t
+      \end{tabular}\qquad
+      \begin{tabular}{ll}
+        $\land$           & AND\\
+        $\lor$            & OR\\
+        $\uparrow$        & NAND\\
+        $\veebar$         & EXOR\\
+        $\Rightarrow$     & Implication\\
+        $\Leftrightarrow$ & Equivalence
+      \end{tabular}
+      \caption{Binary operators}
+    \end{table}
+
+We point out the importance of the implication arrow, which is frequently ill-understood. The implication arrow is a binary operator that takes two propositions and constructs a new one that, in total, is true or false, as defined in the previous table.
+\begin{remark}
+  From the implication operator, one can conclude anything based on false assumptions, also known as ''ex falso quodlibet''.
+\end{remark}
+Then, the question is: why on Earth would you define the implication arrow like this? The answer is hidden in the following theorem: 
+\begin{theorem}
+  \begin{equation}
+    (p \Rightarrow q) \Leftrightarrow ((\neg q)\Rightarrow (\neg p))
+  \end{equation}
+\end{theorem}
+\begin{corollary}
+  We can prove assertions by way of contradiction. E.g. assume that p is true and we want to prove that q is true. Then, what we can do instead, and is fully equivalent, is to assume that what we want to prove is not true, and then prove that that means that the assumption is not true. Then we say we have a contradiction and q must have been true. Proof: construct a truth table.
+\end{corollary}
+
+\begin{remark}
+  All higher order operators can be constructed from the single NAND operator.
+\end{remark}
+
+\section{Predicate logic}
+\begin{mydef}
+  A \textbf{predicate} is (informally) a proposition-valued function of some variables(s). In particular, a predicate of two variables is called a relation.
+\end{mydef}
+
+\begin{myex}
+  $P(x) = \{true,\ false\};\ Q(x,y)$ 
+\end{myex}
+
+One can construct new predicates of given ones by means of operators, e.g.
+\begin{myex}
+  $Q(x,y,z):\Leftrightarrow P(x) \land R(y,z)$
+\end{myex}
+
+More interestingly, we can construct a new proposition from a given predicate by using \emph{quantifiers}\footnote{A quantifier is a language object that specify the elements that satisfy a given predicate.}.
+Let $P(x)$ be a predicate. Then, one can define the proposition
+$$p:\Leftrightarrow \forall x : P(x)$$
+by using the \textbf{universal quantifier} $\forall$. This means that the proposition $p$ is true $iff$, for every preposition $x$, the predicate $P(x)$ is true. $p$ is false otherwise.
+
+Then, we can define define the \textbf{existential quantifier} $\exists$  and the \textbf{unique existential quantifier} $\exists !$ by: 
+$$
+\exists \, x : P(x) : \Leftrightarrow \neg (\forall \, x : \neg P(x)).
+$$
+$$
+\exists ! \, x : P(x) :\Leftrightarrow (\exists \, x : \forall \, y : P(y) \Leftrightarrow x=y)
+$$
+
+\section{Axiomatic System and theory of proofs}
+
+\begin{mydef}
+  An \textbf{axiom} $a$ or assumption is a proposition $p$ taken to be true, i.e. a tautology of $p$ ($a=T(p)$).
+\end{mydef}
+
+\begin{mydef}
+  An \textbf{axiomatic system} is a finite sequence of axioms $a_1,a_2,\ldots,a_N$.
+\end{mydef}
+
+\begin{mydef}
+  A \textbf{proof} of a proposition $p$ within an axiomatic system $a_1,a_2,\ldots,a_N$ is a finite sequence of propositions $q_1,q_2,\ldots,q_M$ such that $q_M=p$ and for any $1\leq j \leq M$ one of the following is satisfied:
+\begin{enumerate}
+\item[(A)] $q_j$ is a proposition from the list of axioms;
+\item[(T)] $q_j$ is a tautology;
+\item[(M)] $\exists \, 1\leq m,n <j : (q_m\land q_n \Rightarrow q_j)$ is true. This is called modus ponens or deduction rule.
+\end{enumerate}
+\end{mydef}
+\begin{remark}
+
+If $p$ can be proven within an axiomatic system $a_1,a_2,\ldots,a_N$, we write:
+$$
+a_1,a_2,\ldots,a_N \vdash p
+$$
+and we read ``$a_1,a_2,\ldots,a_N$ proves $p$''.
+\end{remark}
+
+\begin{mydef}
+An axiomatic system $a_1,a_2,\ldots,a_N$ is said to be \emph{consistent} if there exists a proposition $q$ which cannot be proven from the axioms.
+$$
+\exists \, q : \neg (a_1,a_2,\ldots,a_N \vdash q).
+$$
+\end{mydef}
+
+\begin{theorem}
+  Propositional logic is consistent.
+\end{theorem}
+
+\begin{theorem}[Godel]
+Any axiomatic system powerful enough to encode elementary arithmetic is either inconsistent or contains an undecidable proposition, i.e.\ a proposition that can be neither proven nor disproven within the system.
+\end{theorem}
+
+\section{The $\in$-relation}
+
+Set theory is built on the postulate that there is a fundamental relation (i.e.\ a predicate of two variables) denoted by $\in$. However, there is no definition of what $\in$ is, or of what a set is. Instead, nine axioms concerning $\in$ and sets formulate the set theory upon which all modern mathematics are built. This axiomatic system is called \textbf{Zermelo-Fraenkel set theory}. As an overview, we have:
+
+\begin{itemize}
+\item 2 basic existence axioms, one about the $\in$ relation and the other about the existence of the empty set;
+\item 4 construction axioms, which establish rules for building new sets from given ones.
+They are the pair set axiom, the union set axiom, the replacement axiom and the power set axiom; 
+\item 2 further existence/construction axioms, these are slightly more advanced and newer compared to the others;
+\item 1 axiom of foundation, excluding some constructions as not being sets.
+\end{itemize}
+Using the $\in$-relation we can immediately define the following relations:
+\begin{itemize}
+  \item $x\notin y :\Leftrightarrow \neg(x\in y)$
+  \item $x\subseteq y :\Leftrightarrow \forall \, a : (a\in x \Rightarrow a\in y)$
+\item $x = y :\Leftrightarrow (x\subseteq y) \land (y\subseteq x)$
+\item $x \subset y :\Leftrightarrow (x \subseteq y) \land \neg (x = y)$
+\end{itemize}
+
+\section{Zermelo-Fraenkel axioms of set theory}
+
+\subsection{Axiom on the $\in$-relation} 
+The expression $x\in y$ is a proposition if, and only if, both $x$ and $y$ are sets.
+$$
+\forall \, x : \forall \, y : (x\in y) \veebar \neg (x\in y).
+$$
+
+\subsection{Axiom on the existence of an empty set}
+There exists a set that contains no elements. $$
+\exists \, y : \forall \, x : x \notin y .
+$$
+
+\begin{theorem}
+This set is unique and is called the empty set $\emptyset$.
+\end{theorem}
+
+\subsection{Axiom on pair sets}
+Let $x$ and $y$ be sets. Then there exists a set that contains as its elements precisely $x$ and $y$
+$$
+\forall \, x : \forall \, y : \exists \, m : \forall \, u : (u\in m \Leftrightarrow (u = x \lor u = y)).
+$$
+The set $m$ is called the \emph{pair set} of $x$ and $y$ and it is denoted by $\{x,y\}$.
+
+\subsection{Axiom on union sets}
+Let $x$ be a set. Then there exists a set whose elements are precisely the elements of the elements of $x$. 
+$$
+\forall \, x : \exists \, u : \forall \, y : (y \in u \Leftrightarrow \exists \, s :(y \in s\land s \in x))
+$$
+
+The set $u$ is denoted by $\bigcup x$, called union of the elements of $x$.
+
+\subsection{Axiom of replacement}
+Let $R$ be a functional relation and let $m$ be a set. Then the image of $m$ under $R$, denoted by $\text{im}_R(m)$, is again a set.
+
+\begin{mydef}
+A relation $R$ is said to be \textbf{functional} if:
+$$
+\forall \, x : \exists ! \, y : R(x,y) .
+$$
+\end{mydef}
+
+\begin{mydef}
+  Let $m$ be a set and let $R$ be a functional relation. The \textbf{image} of $m$ under $R$ consists of all those $y$ for which there is an $x\in m$ such that $R(x,y)$. 
+\end{mydef}
+
+\begin{theorem}
+  $\{y \in m \mid P(y)\}$ is a set. This is called \textbf{principle of restricted comprehension} and is a consequence of the axiom of replacement.
+\end{theorem}
+
+The principle of restricted comprehension is not to be confused with the ``principle'' of universal comprehension which states that $\{y \mid P(y)\} $ is a set for any predicate. This has shown to be inconsistent by Russell. Observe that the $y \in m$ condition makes it so that $\{y \in m \mid P(y)\}$ cannot have more elements than $m$ itself.
+
+
+\begin{mydef}
+  Let $x$ be a set. Then we define the \textbf{intersection} of $x$ by:
+  $$
+  \bigcap x := \{ a \in \bigcup x \mid \forall \, b \in x : a \in b \}.
+  $$
+\end{mydef}
+If $a,b\in x$ and $\bigcap x = \emptyset$, then $a$ and $b$ are said to be \emph{disjoint}.
+
+\begin{mydef}
+  Let $u$ and $m$ be sets such that $u \subseteq m$. Then the \textbf{complement} of $u$ relative to $m$ is defined as ``$m$ without $u$'':
+  $$
+  m\setminus u := \{x \in m \mid x \notin u\}.
+  $$
+\end{mydef}
+
+These are both sets by the principle of restricted comprehension, which is ultimately due to axiom of replacement.
+\subsection{Axiom on the existence of power sets}
+Let $m$ be a set. Then there exists a set, denoted by $\mathcal{P}(m)$, whose elements are precisely the subsets of $m$.
+
+\begin{myex}
+  Let $m = \{a,b\}$. Then $\mathcal{P}(m)=\{\emptyset,\{a\},\{b\},\{a,b\}\}$.
+\end{myex}
+
+%If one defines $(a,b) := \{a,\{a,b\}\}$, then the \textbf{cartesian product} $x \times y$ of two sets $x$ and $y$, which informally is the set of all ordered pairs of elements of $x$ and $y$, satisfies:
+%$$
+%x\times y \subseteq \mathcal{P}(\mathcal{P}(\bigcup\,\{x, y\})).
+%$$
+%
+%Hence, the existence of $x\times y$ as a set follows from the axioms on unions, pair sets, power sets and the principle of restricted comprehension.
+
+\subsection{Axiom of infinity}
+There exists a set that contains the empty set and,  together with every other element $y$, it also contains the set $\{y\}$ as an element.
+$$
+\exists \, x : \emptyset \in x \land \forall \, y : (y\in x \Rightarrow \{y\} \in x).
+$$
+
+\begin{corollary}
+Let us consider one such set $x$. Then $\emptyset \in x$ and hence $\{\emptyset\}\in x$. Thus, we also have $\{\{\emptyset\}\}\in x$ and so on. Therefore:
+$$
+x = \{\emptyset,\{\emptyset\},\{\{\emptyset\}\},\{\{\{\emptyset\}\}\},\ldots\}.
+$$
+We can introduce the following notation for the elements of $x$:
+$$
+0 :=\emptyset , \quad 1  := \{\emptyset\},\quad 2:= \{\{\emptyset\}\}, \quad 3:= \{\{\{\emptyset\}\}\} , \quad \ldots
+$$
+to construct the set $\mathbb{N}:=x$ and $\mathbb{R}:= \mathcal{P}(\mathbb{N})$ as known as the set of natural and real numbers respectively.
+\end{corollary}
+
+\subsection{Axiom of choice}
+Let $x$ be a set whose elements are non-empty and mutually disjoint. Then there exists a set $y$ which contains exactly one element of each element of $x$.
+$$
+\forall \, x : P(x) \Rightarrow \exists \, y : \forall \, a \in x :\exists! \, b \in a : a \in y,
+$$
+
+where $P(x) \Leftrightarrow (\exists \,a : a \in x) \land (\forall \, a : \forall \, b : (a\in x \land b \in x) \Rightarrow \bigcap \, \{a,b\} = \emptyset )$.
+
+\begin{remark}
+The axiom of choice is independent of the other 8 axioms, which means that one could have set theory with or without the axiom of choice. However, there are important theorems that can only be proved by using the axiom of choice. 
+\end{remark}
+
+\textbf{Axiom of foundation.}\index{axiom!of foundation} \emph{Every non-empty set $x$ contains an element $y$ that has none of its elements in common with $x$. In symbols:}
+
+$$
+\forall \, x : (\exists \,a : a \in x) \Rightarrow \exists \, y \in x : \bigcap \, \{x,y\} = \emptyset .
+$$
+
+An immediate consequence of this axiom is that there is no set that contains itself as an element.\\
+
+
+
+\section{Classification of sets}
+
+A recurrent theme in mathematics is the classification of \emph{spaces} by means of structure-preserving \emph{maps} between them. 
+
+\begin{mydef}
+  Let $A,B$ be sets. A \textbf{map} $\phi : A \to B$ is a relation such that for each $a \in A$ there exists exactly one $b \in B$ such that $\phi(a,b)$ holds.
+\end{mydef}
+The standard notation for a map is:
+\begin{equation}
+\begin{aligned}
+\phi :& A   & \to     & B\\
+      & a   & \mapsto & \phi(a)
+\end{aligned}
+\end{equation}
+
+The following is standard terminology for a map $\phi : A \to B$:
+\begin{itemize}
+  \item the set $A$ is called the \textbf{domain}\index{domain} of $\phi$;
+\item the set $B$ is called the \textbf{target}\index{target} of $\phi$;
+\item the set $\phi(A) \equiv \text{im}_\phi(A) := \{\phi(a) \mid a \in A\}$ is called the \textbf{image}\index{image} of $A$ under $\phi$.
+\end{itemize}
+
+\begin{mydef}
+A \textbf{map} $\phi : A \to B$ is said to be:
+\begin{itemize}
+  \item \textbf{injective} if $\ \forall \, a_1,a_2 \in A : \phi(a_1)=\phi(a_2) \Rightarrow a_1 = a_2$;
+\item \textbf{surjective} if $\text{im}_\phi(A) = B$;
+\item \textbf{bijective} if it is both injective and surjective.
+\end{itemize}
+\end{mydef}
+
+\begin{mydef}
+  Two sets $A$ and $B$ are called \textbf{(set-theoretic) isomorphic}\index{isomorphism!of sets} if there exists a bijection $\phi : A \to B$. In this case, we write $A \cong_{set} B$.
+\end{mydef}
+
+Bijections are the ``structure-preserving'' maps for sets. Intuitively, they pair up the elements of $A$ and $B$ and a bijection between $A$ and $B$ exists only if $A$ and $B$ have the same ``size''. This is clear for finite sets, but it can also be extended to infinite sets.\\
+
+
+\begin{mydef}[Classification of sets]
+A set $A$ is:
+\begin{itemize}
+  \item \textbf{infinite}\index{set!infinite} if there exists a proper subset $B\subset A$ such that $B \cong_{set} A$. In particular, if $A$ is infinite, we further define $A$ to be:
+\begin{itemize}
+  \item[$*$] \textbf{countably} infinite if $A \cong_{set} \mathbb{N}$;
+\item[$*$] \textbf{uncountably} infinite otherwise.
+\end{itemize}
+\item \textbf{finite} if it is not infinite. In this case, we have $A \cong_{set} \{1,2,\ldots,N\}$ for some $N \in \mathbb{N}$ and we say that the \textbf{cardinality} of $A$, denoted by $|A|$, is $N$.
+\end{itemize}
+\end{mydef}
+
+Given two maps $\phi : A \to B$ and $\psi : B \to C$, we can construct a third map, called the \textbf{composition} of $\phi$ and $\psi$, denoted by $\psi \circ \phi$, defined by:
+\begin{equation}\begin{aligned}
+\psi \circ \phi : & A & \to & C\\
+& a & \mapsto & \psi(\phi(a)).
+\end{aligned}\end{equation}
+
+This is often represented by drawing the following diagram
+\begin{figure}[hbtp]
+  \centering
+\begin{tikzcd}
+&B \arrow [dr,"\psi"]& \\
+A  \arrow [ur,"\phi"] \arrow[rr, "\psi\circ\phi"'] & & C
+\end{tikzcd}
+\end{figure}
+
+and by saying that ``the diagram commutes'' means that all paths connecting two nodes in the diagram are equivalent. 
+
+
+\begin{proposition}
+Composition of maps is associative.
+\end{proposition}
+
+\begin{mydef}
+Let $\phi : A \to B$ be a bijection. Then the \textbf{inverse} of $\phi$, denoted $\phi^{-1}$, is defined (uniquely) by:
+$$
+\phi^{-1}\circ\phi = \text{id}_A
+$$
+$$
+\phi\circ\phi^{-1} = \text{id}_B.
+$$
+\end{mydef}
+
+Equivalently, we say that this diagram commutes: 
+$$
+\begin{tikzcd}
+  A \arrow[loop left, "\text{id}_A"] \arrow[rr, bend left,"\phi"] & & B \arrow[loop right, "\text{id}_B"] \arrow[ll, bend left,"\phi^{-1}"]
+\end{tikzcd}
+$$
+
+The inverse map is only defined for bijections. However, the following notion, which we will often meet in topology, is defined for any map.
+
+\begin{mydef}
+Let $\phi : A \to B$ be a map and let $V\subseteq B$. Then we define the set:
+$$
+\mathrm{preim}_\phi(V) := \{a \in A \mid \phi(a) \in V\}
+$$
+called the \textbf{pre-image} of $V$ under $\phi$.
+\end{mydef}
+
+\begin{proposition}
+Let $\phi : A \to B$ be a map, let $U,V \subseteq B$ and $C=\{C_j \mid j \in J\} \subseteq \mathcal{P}(B)$. Then:
+\begin{enumerate}
+\item[i)] $\mathrm{preim}_\phi(\emptyset)=\emptyset$ and $\mathrm{preim}_\phi(B)=A$;
+\item[ii)] $\mathrm{preim}_\phi(U\backslash V)=\mathrm{preim}_\phi(U)\backslash \mathrm{preim}_\phi(V)$;
+\item[iii)] $\mathrm{preim}_\phi(\bigcup C)=\bigcup_{j \in J} \mathrm{preim}_\phi(C_j)$
+ and $\mathrm{preim}_\phi(\bigcap C)=\bigcap_{j \in J} \mathrm{preim}_\phi(C_j)$.
+ \end{enumerate}
+\end{proposition}
+
+\section{Equivalence relations}
+
+\begin{mydef}
+Let $M$ be a set and let $\sim$ be a relation such that the following conditions are satisfied:
+\begin{enumerate}
+\item[i)] reflexivity: $\forall \, m \in M: m \sim m;$
+\item[ii)] symmetry: $\forall \, m,n \in M: m \sim n \Leftrightarrow n \sim n;$
+\item[iii)] transitivity: $\forall \, m,n,p \in M: (m \sim n \land n \sim p) \Rightarrow m \sim p.$
+\end{enumerate}
+Then $\sim$ is called an \textbf{equivalence relation}\index{equivalence relation}\index{relation!equivalence} on $M$.
+\end{mydef}
+
+\begin{myex}
+Consider the following wordy examples.
+\begin{enumerate}[label=\alph*)]
+\item $p\sim q :\Leftrightarrow $ $p$ is of the same opinion as $q$. This relation is reflexive, symmetric and transitive. Hence, it is an equivalence relation.
+\item $p\sim q :\Leftrightarrow $ $p$ is a sibling of $q$. This relation is symmetric and transitive but not reflexive and hence, it is not an equivalence relation.
+\item $p\sim q :\Leftrightarrow $ $p$ is taller $q$. This relation is transitive, but neither reflexive nor symmetric and hence, it is not an equivalence relation.
+\end{enumerate}
+\end{myex}
+
+\begin{mydef}
+Let $\sim$ be an equivalence relation on the set $M$. Then, for any $m \in M$, we define the set:
+$$
+[m] := \{n \in M \mid m \sim n\}
+$$
+called the \textbf{equivalence class} of $m$. Note that the condition $m \sim n$ is equivalent to $n \sim m$ since $\sim$ is symmetric.
+\end{mydef}
+
+\begin{proposition}
+Let $\sim$ be an equivalence relation on $M$. Then:
+\begin{enumerate}
+\item[i)] $a \in [m] \Rightarrow [a]=[m]$;
+\item[ii)] either $[m]=[n]$ or $[m] \cap [n] = \emptyset$.
+\end{enumerate}
+\end{proposition}
+
+\begin{mydef}
+Let $\sim$ be an equivalence relation on $M$. Then we define the \textbf{quotient set} of $M$ by $\sim$ as:
+$$
+M/\!\sim\ := \{[m]\mid m \in M\}.
+$$
+This is indeed a set since $[m]\subseteq\mathcal{P}(M)$ and hence we can write more precisely:
+$$
+M/\!\sim\ := \{[m]\in\mathcal{P}(M)\mid m \in M\}.
+$$
+Then clearly $M/\!\sim$ is a set by the power set axiom and the principle of restricted comprehension.
+\end{mydef}
+
+\begin{remark}
+Due to the axiom of choice, there exists a complete system of representatives for $\sim$, i.e.\ a set $R$ such that $R \cong_{set} M/\!\sim$.
+\end{remark}
+
+\begin{remark}
+Care must be taken when defining maps whose domain is a quotient set if one uses representatives to define the map. In order for the map to be \textbf{well-defined} one needs to show that the map is independent of the choice of representatives. 
+\end{remark}
+
+
+
+\onlyinsubfile{
+\bibliography{bibliography} %Same name as .bib
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{abbrv}
+}
+\end{document}
