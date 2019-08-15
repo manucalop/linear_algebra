@@ -1,0 +1,207 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%COPYRIGHT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+    % Copyright (C) 2016 Manuel Castillo López
+
+    % This program is free software: you can redistribute it and/or modify
+    % it under the terms of the GNU General Public License as published by
+    % the Free Software Foundation, either version 3 of the License, or
+    % (at your option) any later version.
+
+    % This program is distributed in the hope that it will be useful,
+    % but WITHOUT ANY WARRANTY; without even the implied warranty of
+    % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    % GNU General Public License for more details.
+
+    % You should have received a copy of the GNU General Public License
+    % along with this program.  If not, see <http://www.gnu.org/licenses/>.
+\documentclass[0_algebra.tex]{subfiles}
+\begin{document}
+
+\onlyinsubfile{
+\title{\centering \huge \bfseries Álgebra Lineal}
+\author{
+	\emph{ \bfseries \centering Tema 3: Espacios Vectoriales}\\[1.5 cm]
+ %	\emph{\centering Open Source Project}\\[1.5 cm]
+ % 	\textsc{Escuela Técnica Superior de Ingeniería Industrial}\\
+ % 	\textsc{University of Málaga}\\[0.5 cm]
+ 	\texttt{ingenierocontracabrones.blogspot.com}\\[0.5 cm]
+	\texttt{mclnaranjito@gmail.com}\\[4 cm]
+	\small{Copyright \copyright \ (2016 - \the\year) \ Manuel Castillo López.} \\
+	\small{GPL GNU General Public License}\\[0.5 cm]
+	}
+\maketitle
+\tableofcontents
+
+\setcounter{chapter}{2}
+}
+
+\chapter{Espacios Vectoriales y Aplicaciones lineales}
+\section{Espacio vectorial}
+Un espacio vectorial sobre un cuerpo $(K,+,\cdot)$ es un grupo abeliano $(V,+)$ dotado con una operación externa $K \times V \rightarrow V$, que verifica las siguientes propiedades:
+\begin{enumerate}
+\item Distributiva respecto a escalares $\rightarrow \lambda\cdot(v+w)=\lambda\cdot v+\lambda \cdot w$
+\item Distributiva respecto a vectores $\rightarrow (\lambda + \mu)\cdot v= \lambda \cdot v+ \mu \cdot v$
+\item Asociativa $\rightarrow \lambda \cdot (\mu \cdot v)=(\lambda \cdot \mu)\cdot v$
+\item Modular $\rightarrow 1 \cdot v = v$
+\end{enumerate}
+Con\  $\lambda,\ \mu \in K$ y $v, w \ \in V$.\\
+Si el espacio vectorial en cuestión tiene como cuerpo a los números reales será un espacio vectorial real, mientras que si tiene a los números complejos se denotará como espacio vectorial complejo.\\
+Veamos a continuación un ejemplo práctico para su mejor comprensión:
+\newpage
+\subsubsection*{Ejemplo 1}
+\textbf{Demostrar que el conjunto $\mathbb{C}$ de los números complejos, con las operaciones suma y producto usuales, tiene estructura de espacio vectorial sobre el cuerpo de los números reales:}\\
+Demostremos que $(\mathbb{C}(\mathbb{R}),+,\cdot)$ tiene estructura de espacio vectorial:\\
+Partiendo de que $(\mathbb{R},+,\cdot)$ es un cuerpo, comprobamos que $(\mathbb{C},+)$ es grupo abeliano:
+\begin{enumerate}
+\item Operación interna: La suma de números complejos es una operación interna ya que da como resultado otro número complejo:
+$$
+(a+bi)+(c+di)=(a+b)+(c+d)i \in \mathbb{C}
+$$
+\item Propiedad asociativa: La suma de números complejos es asociativa, ya que:
+$$
+(a+bi)+[(c+di)+(e+fi)]=[(a+bi)+(c+di)]+(e+fi)=(a+c+e)+(b+d+f)i
+$$
+\item Existencia de elemento neutro $(0+0i)$, ya que:
+$$
+(a+bi)+(0+0i)=a+bi
+$$
+\item Existencia de elemento simétrico $[(-a)+(-b)i]$, ya que:
+$$
+(a+bi)+[(-a)+(-b)i]=(0+0i)
+$$
+\item Propiedad conmutativa: La suma de números complejos es conmutativa, ya que:
+$$
+(a+bi)+(c+di)=(c+di)+(a+bi)=(a+b)+(c+d)i
+$$
+\end{enumerate}
+Es trivial demostrar que el producto de escalares reales con números complejos es operación externa, ya que el producto de un número real por un número complejo sigue siendo un número complejo:
+$$
+r*(a+bi)=ra+rbi \in \mathbb{C}\quad \text{con} \ r,a,b\in \mathbb{R}
+$$
+Por lo que $\mathbb{R}\times \mathbb{C} \overset{\cdot}{\rightarrow} \mathbb{C}$.\\
+
+Para terminar demostramos las cuatro propiedades que hacen que un grupo abeliano con operacion externa e interna sea un espacio vectorial sobre el cuerpo, en este caso, de los números reales:
+\begin{enumerate}
+\item Distributiva respecto a escalares:
+$$
+r[(a+bi)+(c+di)]=r(a+bi)+r(c+di)=(ra+rc)+(rb+rd)i
+$$
+\item Distributiva respecto a vectores:
+$$
+(r+s)(a+bi)=r(a+bi)+s(a+bi)=(ra+sa)+(rb+sb)i
+$$
+\item Asociativa:
+$$
+r[(a+bi)(c+di)]=[r(a+bi)](c+di)=(rac-rbd)+(rad+rbc)i
+$$
+\item Modular:
+$$
+1\cdot(a+bi)=a+bi
+$$
+\end{enumerate}
+Con $r,s,a,b,c,d\ \in \mathbb{R}$\\
+
+Y así queda demostrado que el cuerpo de los números complejos, con las operaciones de suma y producto, tiene estructura de espacio vectorial sobre el cuerpo de los números reales.
+\section{Subespacio vectorial}
+\begin{figure}[h]
+	\centering
+	\input{imagenes/under_construction.tex}
+\end{figure}
+
+
+\section{Dependencia e independencia lineal}
+\begin{figure}[h]
+	\centering
+	\input{imagenes/under_construction.tex}
+\end{figure}
+\subsection{Sistema generador}
+\begin{figure}[h]
+	\centering
+	\input{imagenes/under_construction.tex}
+\end{figure}
+\subsection{Base}\begin{figure}[h]
+	\centering
+	\input{imagenes/under_construction.tex}
+\end{figure}
+\subsection{Base de un subespacio}
+\begin{figure}[h]
+	\centering
+	\input{imagenes/under_construction.tex}
+\end{figure}
+\subsection{Cooredenadas y cambio de base}
+\begin{figure}[h]
+	\centering
+	\input{imagenes/under_construction.tex}
+\end{figure}
+
+\section{Operaciones con subespacios}
+
+\begin{figure}[h]
+	\centering
+	\input{imagenes/under_construction.tex}
+\end{figure}
+
+\section{Aplicación lineal}
+
+\begin{figure}[h]
+	\centering
+	\input{imagenes/under_construction.tex}
+\end{figure}
+
+\subsection{Matriz de una aplicación lineal}
+\begin{figure}[h]
+	\centering
+	\input{imagenes/under_construction.tex}
+\end{figure}
+\subsection{Matriz de una composición}
+\begin{figure}[h]
+	\centering
+	\input{imagenes/under_construction.tex}
+\end{figure}
+\subsection{Cambio de base en aplicaciones lineales}
+\begin{figure}[h]
+	\centering
+	\input{imagenes/under_construction.tex}
+\end{figure}
+\subsection{Núcleo e imagen de una aplicación lineal}
+\begin{figure}[h]
+	\centering
+	\input{imagenes/under_construction.tex}
+\end{figure}
+
+\section{Matrices y determinantes}
+\begin{figure}[h]
+	\centering
+	\input{imagenes/under_construction.tex}
+\end{figure}
+
+\section{Sistemas y ecuaciones lineales}
+\begin{figure}[h]
+	\centering
+	\input{imagenes/under_construction.tex}
+\end{figure}
+\subsection{Teorema de Rouché-Fröbenius}
+\begin{figure}[h]
+	\centering
+	\input{imagenes/under_construction.tex}
+\end{figure}
+\subsection{Regla de Cramer}
+\begin{figure}[h]
+	\centering
+	\input{imagenes/under_construction.tex}
+\end{figure}
+\subsection{Método de Gauss}
+\begin{figure}[h]
+	\centering
+	\input{imagenes/under_construction.tex}
+\end{figure}
+\subsection{Factorización LU}
+\begin{figure}[h]
+	\centering
+	\input{imagenes/under_construction.tex}
+\end{figure}
+
+\end{document}

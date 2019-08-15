@@ -1,0 +1,301 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%COPYRIGHT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+    % Copyright (C) 2016 Manuel Castillo López
+
+    % This program is free software: you can redistribute it and/or modify
+    % it under the terms of the GNU General Public License as published by
+    % the Free Software Foundation, either version 3 of the License, or
+    % (at your option) any later version.
+
+    % This program is distributed in the hope that it will be useful,
+    % but WITHOUT ANY WARRANTY; without even the implied warranty of
+    % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    % GNU General Public License for more details.
+
+    % You should have received a copy of the GNU General Public License
+    % along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    \documentclass[0_algebra.tex]{subfiles}
+    \begin{document}
+
+
+
+    \onlyinsubfile{
+    \title{\centering \huge \bfseries Álgebra Lineal}
+    \author{
+    	\emph{ \bfseries \centering Tema 2: Estructuras Algebraicas}\\[1.5 cm]
+     %	\emph{\centering Open Source Project}\\[1.5 cm]
+     % 	\textsc{Escuela Técnica Superior de Ingeniería Industrial}\\
+     % 	\textsc{University of Málaga}\\[0.5 cm]
+     	\texttt{ingenierocontracabrones.blogspot.com}\\[0.5 cm]
+    	\texttt{mclnaranjito@gmail.com}\\[4 cm]
+    	\small{Copyright \copyright \ (2016 - \the\year) \ Manuel Castillo López.} \\
+    	\small{GPL GNU General Public License}\\[0.5 cm]
+    	}
+    \maketitle
+    \tableofcontents
+    }
+\setcounter{chapter}{1}
+
+\chapter{Estructuras algebraicas}
+
+\section{Operación interna}
+Sea $A$ un conjunto no vacío. Se llama operación interna definida en $A$ a cualquier aplicación de $A \times A$ en $A$ que asocia a cada par $(a,b)$ de elementos de $A$ un único elemento $c$, resultado de operar $a$ con $b$. Mátemáticamente, para el operador ''$*$'', se expresa de la siguiente forma:\\
+
+\begin{minipage}{0.5\textwidth}
+\begin{center}
+$A\times A \overset{*}{\rightarrow} A$\\
+$(a,b) \rightarrow c:=a*b$
+\end{center}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+con $a,b,c \ \in A$
+\end{minipage}\\
+
+\subsubsection*{Ejemplo: }
+El producto de números reales ($\mathbb{R}, \cdot $) es una operación interna del conjunto de los números reales, ya que cualquier producto de números reales da como resultado otro número real.
+$$
+x \cdot y \in \mathbb{R} \quad \forall x,y \in \mathbb{R}
+$$
+
+\subsection*{Propiedades}
+Sea $(A,*)$ un conjunto no vacío ($A$) donde hay definida una operación interna ($*$). Diremos que la operación es:
+
+\begin{itemize}
+\item \textbf{Asociativa} $\Leftrightarrow a*(b*c)=(a*b)*c \quad \forall a,b,c \in A$
+\item \textbf{Conmutativa} $\Leftrightarrow a*b=b*a \quad \forall a,b \in A$
+\end{itemize}
+
+Añadamos una nueva operación interna a nuestro par, obteniendo $(A,*,\circ)$. Diremos que $\circ$ es \textbf{distributiva} respecto de $*$ si
+$$
+\forall a,b,c \in A,
+\begin{cases}
+a\circ (b*c)=(a\circ b)*(a\circ c),\\
+(a*b)\circ c= (a \circ c) * (b \circ c)
+\end{cases}
+$$
+
+\subsection*{Elementos particulares}
+\begin{itemize}
+\item Elemento neutro $e$:\quad $a*e=e*a=a$
+\item Elemento simétrico $a'$:\quad $a*a'=a'*a=e$
+\end{itemize}
+
+\subsubsection*{Ejemplo:}
+Sea $(\mathbb{R},+,\cdot )$ el conjunto de los números reales con las operaciones internas de producto y suma. Podemos comprobar que tanto el producto como la suma son asociativos y conmutativos. Además el producto es distributivo respecto de la suma ya que:
+$$
+\forall a,b,c \in \mathbb{R},
+\begin{cases}
+a\cdot (b+c)=(a\cdot b)+(a \cdot c),\\
+(a+b)\cdot c= (a \cdot c) + (b \cdot c)
+\end{cases}
+$$
+
+
+\section{Operación externa}
+Dados dos conjuntos $A$ y $K$, se llama operación externa definida en A y con dominio de escalares $K$, a cualquier aplicación:\\
+
+\begin{minipage}{0.5\textwidth}
+\begin{center}
+$K\times A \overset{\bot}{\rightarrow} A$\\
+$(k,a) \rightarrow b:=k\bot a$
+\end{center}
+\end{minipage} con
+\quad
+\begin{minipage}{0.4\textwidth}
+$k\in K$\\
+$a\in A$
+\end{minipage}\\
+
+\subsubsection*{Ejemplo:}
+
+Sea $V_3 \equiv \lbrace v=(x,y,z)\quad \forall x,y,z \in \mathbb{R}\rbrace$ el conjunto de los vectores reales de tres dimensiones y el conjunto de los escalares enteros  $K\equiv \lbrace k\quad \forall k \in \mathbb{Z}\rbrace$. El producto de escalares por vectores es operación externa ya que $k\cdot v \in V_3$.
+
+\section{Homomorfismos}
+Sean $(A,*)$ y $(B,\circ)$ dos conjuntos con operaciones internas definidas. Una aplicación $f: A \rightarrow B$ es un \textbf{homomorfismo} si
+$$
+f(a*b)=f(a)\circ f(b), \quad \forall a,b \in A
+$$
+
+Si $f$ es un homomorfismo y además
+\begin{itemize}
+\item es inyectivo se llamará \textbf{monomorfismo}.
+\item es sobreyectivo se llamará \textbf{epimorfismo}.
+\item es biyectivo se llamará \textbf{isomorfismo}.
+\item $A=B$ se llamará \textbf{endomorfismo}.
+\item es endomorfismo biyectivo se llamará \textbf{automorfismo}
+\end{itemize}
+
+
+
+\subsubsection*{Ejemplo:}
+Sean $G=(\mathbb{R},+)$ y $H=(\mathbb{R}^+,\cdot)$. Definamos una aplicación
+$$
+\begin{matrix}
+f:G\leftarrow H\\
+x \mapsto e^x
+\end{matrix}
+$$
+
+Podemos afirmar que se trata de un homomorfismo ya que
+
+$$
+\begin{matrix}
+f(x+y)=f(x)\cdot f(y)\\
+e^{x+y}=e^x+e^y
+\end{matrix}
+$$
+\section{Grupo}
+Un \textbf{grupo} es una pareja $(G,*)$, donde G es un conjunto en el que está definida una operación interna $*$ que verifica:
+\begin{enumerate}
+\item Asociativa.
+\item Existencia de elemento neutro $e$, es decir, $g*e=g$
+\item Todo elemento $g$ posee simétrico $g'$, es decir, $g*g'=e$
+\end{enumerate}
+Si además la operación interna $*$ es conmutativa, el grupo se llamara \textbf{abeliano}.\\
+
+\subsection*{Propiedades de un grupo}
+\begin{itemize}
+\item El elemento neutro es único
+\item $(a*b)'=b'*a'$
+\item $(a')'=a$
+\item $a*x=a*y \Rightarrow x=y$
+\end{itemize}
+
+\subsection*{Orden de un grupo}
+Sea $(G,*)$ un grupo. El \textbf{orden} de un elemento $a \in G$ es el menor entero positivo $k\in \mathbb{N}^*$ para el que $a^k=e$. Si no existe $k$, el orden es infinito o cero.\\
+
+Al número de elementos de un grupo se le llama \textbf{orden} de $G$ y se denota por $|G|$.\\
+
+%Si $(G,*)$ sólo cumple la propiedad asociativa será un \textbf{semigrupo}. Si además posee elemento neutro hablaremos de un \textbf{monoide}.
+
+
+\subsubsection*{Ejemplo:}
+
+El conjunto de los números enteros con la suma $(\mathbb{Z},+)$ es un grupo abeliano ya que:
+\begin{enumerate}
+\item La suma de numeros enteros es otro número entero.
+\item El elemento neutro de los enteros con la suma es el cero: $z+0=z$.
+\item Todo $z$ posee un simétrico $-z$: $z+(-z)=0$.
+\item La suma de enteros es conmutativa: $z_1+z_2=z_2+z_1$.
+\end{enumerate}
+
+A modo de ejemplo diremos que el orden del grupo es infinito $|\mathbb{Z}|=\infty$. El orden de los elementos son
+
+\begin{flalign*}
+&|1|=1\\
+&|-1|=2\\
+&|z|=\infty \quad \forall z \in \mathbb{Z}-\lbrace-1,1\rbrace
+\end{flalign*}
+
+\subsection*{Subgrupo}
+Sea $(G,*)$ un grupo y $H\subset G$, un subconjunto suyo no vacío. $(H,*)$ es \textbf{subgrupo}  si también posee estructura de grupo.
+
+\subsubsection*{Caracterización}
+Un subconjunto $H$ es subgrupo si se cumple que
+
+\begin{flalign}
+&\forall a,b \in H \Rightarrow a*b \in H
+\label{sub1}\\
+&\forall a \in H \Rightarrow a' \in H
+\label{sub2}
+\end{flalign}
+
+Las ecuaciones \ref{sub1} y \ref{sub2} se pueden resumir en la siguiente
+
+$$
+\forall a,b \in H \Rightarrow a*b' \in H
+$$
+
+\subsection*{Clases de un grupo}
+Dado un grupo $G$, un subgrupo $H$ y un elemento $a\in G$ arbitrario fijo, a los conjuntos
+
+\begin{align*}
+aH=\lbrace x/x\in G, x=a*h, h\in H \rbrace\\
+Ha=\lbrace x/x\in G, x=h*a, h\in H \rbrace
+\end{align*}
+
+se les denomina respectivamente \textbf{clases} del grupo G a la izquierda y a la derecha módulo el subgrupo $H$. Se les llama así por ser clases de cierta relación de equivalencia \footnote{La relación es $x\sim y \Leftrightarrow x'*y \in H$, aunque no es de interés para ésta explicación.} y, por tanto, forman particiones del grupo $G$.\\
+
+Si $aH=Ha$ entonces, $H$ es un subgrupo \textbf{normal o invariante}.\\
+
+Supongamos que el grupo $G$ es finito y que posee $n$ clases a la izquierda módulo $H$. Entonces,
+$$
+G=a_1H \cup a_2H \cup \dots \cup a_nH
+$$
+$$
+|G|=|a_1H|+|a_2H|+ \dots +|a_nH|=n|H|
+$$
+
+por lo que el orden de un grupo finito $G$ será múltiplo del orden de cualquier subgrupo suyo (\textbf{teorema de Lagrange}).\\
+
+Al cociente $n=|G|/|H|$ se le denomina \textbf{índice del subgrupo} $H$.\\
+
+Un grupo $G$ se dice \textbf{finitamente generado} si existe una parte finita $A$ de $G$ que engendra todo $G$. Si $A$ se reduce a un elemento, el grupo $G$ se llama \textbf{monógeno}.\\
+
+El grupo $G$ es \textbf{cíclico} si es monógeno y finito.
+
+$$
+G=<a>=\lbrace a^n : n \in \mathbb{Z} \rbrace
+$$
+
+\emph{Nota:} Con $a^n$ nos referimos a aplicar $n$ veces el operador $*$ sobre $a$. Ésto coincidirá con la potencia en el caso de que la operación sea el producto pero, en general, no es así.
+
+\subsection*{Homomorfismo de grupos}
+Al igual que en la sección anterior, dos grupos $(G_1,*)$, $(G_2,\circ)$ y una aplicación $f:G_1 \rightarrow G_2$ es \textbf{homomorfismo} si
+
+$$
+f(a*b)=f(a)\circ f(b), \quad \forall a,b \in G_1
+$$
+
+Llamamos \textbf{núcleo} de $f$, representándose por $Ker(f)$, al conjunto de los elementos del dominio cuya imagen es el elemento neutro de $G_2$.
+
+$$
+Ker(f)=\lbrace x\in G_1 : f(x)=e_2 \rbrace = f^{-1}(e_2)
+$$
+
+Llamamos \textbf{imagen} de $f$, denotándose por $Im(f)$, como el subconjunto de $G_2$ formado por aquellos elementos que son imagen de algún elemento de $G_1$. Es decir,
+
+$$
+Im(f)= \lbrace y \in G_2 : \exists x \in G_1, f(x)=y \rbrace
+$$
+
+Por tanto, podemos decir que
+\begin{flalign*}
+& f\ es\ inyectiva\ \Leftrightarrow Ker(f)=\lbrace e_1\rbrace\\
+& f\ es\ sobreyectiva\ \Leftrightarrow Im(f)=G_2
+\end{flalign*}
+\section{Anillo}
+Un anillo es un conjunto dotado con dos operaciones internas llamadas suma y producto. El anillo $(R,+,\cdot)$ cumple que:
+\begin{enumerate}
+\item $(R,+)$ es un grupo abeliano.
+\item El producto es asociativo.
+\item Existe un elemento neutro para la multiplicación.
+\item El producto es distributivo respecto a la suma.
+\end{enumerate}
+Si el producto es conmutativo se dice que el anillo es conmutativo. Si el producto posee elemento neutro es unitario.\\
+
+El elemento neutro de la suma será 0 y el del producto 1.
+
+\subsection*{Subanillo}
+
+\section*{Cuerpo}
+Un cuerpo es un anillo conmutativo y unitario en el que todo elemento distinto de cero es invertible respecto del producto, es decir, un anillo de división conmutativo.\\
+
+Por ejemplo, los números reales con la suma y el producto algebraicos $(\mathbb{R},+,\cdot)$ es un cuerpo ya que:
+\begin{enumerate}
+\item $(\mathbb{R}, +)$ es un grupo abeliano (siendo 0 el elemento neutro de la suma)
+\item El producto de números reales es asociativo.
+\item El elemento neutro de la multiplicación es el 1.
+\item El producto es distributivo respecto de la suma (propiedades de anillo cumplidas).
+\item El anillo es conmutativo, ya que el producto de números reales lo es.
+\item El anillo es unitario ya que el neutro de la multiplicación es distinto del de la suma.
+\item Todo elemento distinto de cero es invertible respecto del producto:
+Sea $r\in \mathbb{R}$ y $r \neq 0$, entonces $\frac{1}{r} \in \mathbb{R}$.
+\end{enumerate}
+Así lo serían también $(\mathbb{C},+,\cdot)$, $(\mathbb{Z},+,\cdot)$ y $(\mathbb{Q},+,\cdot)$.
+
+
+\end{document}

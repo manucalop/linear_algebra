@@ -1,0 +1,22 @@
+%\input{../../../paquetes.tex}
+%\input{../../../paquetes_tikz.tex}
+
+%\begin{document}
+\begin{tikzpicture}[auto,node distance=2cm,main node/.style={circle,fill=red!20,draw,minimum size=1cm}]
+  
+  \node[main node] (16) {16};
+  \node[main node] (18) [right of=16] {18};
+  \node[main node] (8) [below of=16] {8};
+  \node[main node] (6) [below of=18] {6};
+  \node[main node] (2) [below of=8] {2};
+  \node[main node] (3) [below of=6] {3};
+  \node[main node] (5) [right of=3] {5};
+ 
+  \path[thick]
+    (2) edge  node {} (8)
+    	edge  node {} (6)
+    (3) edge  node {} (6)
+    (8) edge  node {} (16)
+    (6) edge  node {} (18);	
+\end{tikzpicture}
+%\end{document}       
