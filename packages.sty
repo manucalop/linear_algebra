@@ -32,23 +32,6 @@
 
 %}}}
 
-% Math {{{
-\usepackage{mathtools}%Librería matemática
-\usepackage{amssymb}%Símbolos matemáticos
-\usepackage{cancel}%Para usar el cancelto
-\usepackage[]{algorithm2e}
-\usepackage{siunitx}
-\usepackage{enumitem}
-
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{corollary}{Corollary}[theorem]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{proposition}{Proposition}
-\newtheorem{remark}{Remark}
-\newtheorem{mydef}{Definition}
-\newtheorem{myex}{Example}
-%}}}
-
 % Graphics{{{
 
 \usepackage{graphicx}%Graphics
@@ -61,4 +44,22 @@
 \usepackage{subcaption}
 \usepackage[capitalise]{cleveref}
 \crefformat{equation}{(#2#1#3)}
+%}}}
+
+% Math {{{
+\usepackage{mathtools}%Librería matemática
+\usepackage{amssymb}%Símbolos matemáticos
+\usepackage{amsthm}%Theorems and proofs
+\usepackage{cancel}%Para usar el cancelto
+\usepackage[]{algorithm2e}
+\usepackage{siunitx}
+\usepackage{enumitem}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{mydef}{Definition}
+\newtheorem{myex}{Example}
 %}}}

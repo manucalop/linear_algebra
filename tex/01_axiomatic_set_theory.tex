@@ -2,24 +2,21 @@
 \begin{document}
 \chapter{Axiomatic set theory}
 
-We start our study with set theory because any space is a set of points. But what precisely is a set? Well, one can think of a set as a collection of elements but that raises the question: what a collection is and what elements are? So certainly we need to do better and, as a fundamental problem, if we start writing a book about mathematics whose pages are all empty yet, what could the first definition be? For a definition you need notions that you already have, in order to define a new notion but, if you don't have any notion yet, how do you start? The trick is to start axiomatically, and so we'll have to write axiomatic set theory but then that raises the question, in what language could you possibly do that? Then, we need another building block that is called standard propositional logic, which will allow us to write the axioms of set theory. 
+Any space, such as a physical space, an Euclidean space, a space of configurations, a Hilbert space, etc. is a set "of points" equipped with further structure. But what precisely is a set? Well, one can think of a set as a collection of elements, but that raises the question of what a collection is and what elements are. So certainly we need to do better and, as a fundamental problem, if we start writing a book about mathematics whose pages are all empty yet, what could the first definition be? For a definition you need notions that you already have in order to define a new notion but, if you don't have any notion yet, how do you start? The trick is to start axiomatically, and to do so we will write axiomatic set theory. Again, this raises the question, in what language could you possibly do that? Then, we need another building block called propositional logic, which will allow us to write the axioms of set theory. 
 
 \section{Propositional logic}
 The key notion of propositional logic is a proposition. 
 \begin{mydef}
-  A \textbf{proposition} $p$ is a variable that can take the values true or false. No other. 
+  A \textbf{proposition} $p$ is a variable\footnote{By this we mean a formal expression, with no extra structure assumed.} that can take the values true (T) or false (F). No other. 
 \end{mydef}
-In particular, it is not the task of propositional logic to decide whether a complex statement of the form: \emph{there is extra-terrestrial life} is true or not. Propositional logic already deals with the complete proposition and just assumes that is either true or false. Certainly, one can build new propositions from given ones by means of \textbf{logical operators}.
-
-Logical operators come in different forms. The simplest is unary operators. A unary operator takes one proposition and makes from it a new proposition.
-
+This is what a proposition is from the point of view of propositional logic. In particular, it is not the task of propositional logic to decide whether a complex statement of the form: \emph{there is extra-terrestrial life} is true or not. Propositional logic already deals with the complete proposition and it just assumes that is either true or false. Certainly, one can build new propositions from given ones by means of \textbf{logical operators}. The simplest kind of logical operators are unary operators. A unary operator takes one proposition and makes from it a new proposition. We define them in the following table:
     \begin{table}[h]
       \centering
       \begin{tabular}{c||c|c|c|c}
         $p$ & $\neg p$ & $\mathrm{id}(p)$ & $\top p$ & $\bot p$ \\
         \hline
-        \rule{0pt}{12pt} t & f & t & t & f\\
-                         f & t & f & t & f
+        \rule{0pt}{12pt} F & T & F & T & F\\
+                         T & F & T & T & F
       \end{tabular}\qquad
       \begin{tabular}{ll}
         $\neg$ & NOT\\
@@ -29,46 +26,63 @@ Logical operators come in different forms. The simplest is unary operators. A un
       \end{tabular}
       \caption{Unary operators}
     \end{table}
-One can quickly check that, if p can be true or false, these operators cover all the possibilities to define a unary operator. The next step are binary operators, we'll draw some interesting ones in the following table:
+
+One can quickly check that, if $p$ can only be true or false, these operators cover all the possibilities to define a unary operator. The next step is to consider binary operators, i.e. operators that take two propositions and return a new one. We have 16 binary operators in total, but we draw some interesting ones in the following table:
 
     \begin{table}[h]
       \centering
-      \begin{tabular}{c|c||c|c|c|c}
-        $p$ & $q$ & $p\land q$ & $\cdots$ & $p \Rightarrow q$ & $p \Leftrightarrow q$ \\
+      \begin{tabular}{c|c||c|c|c|c|c}
+        $p$ & $q$ & $p\land q$ & $p\lor q$ & $p\veebar q$ & $p \Rightarrow q$ & $p \Leftrightarrow q$ \\
         \hline
-          \rule{0pt}{12pt} t & t & t &  & t & t\\
-                           t & f & f &  & f & f\\
-                           f & t & f &  & t & f\\
-                           f & f & f &  & t & t
-      \end{tabular}\qquad
+          \rule{0pt}{12pt} F & F & F & F & F & T & T\\
+                           F & T & F & T & T & T & F\\
+                           T & F & F & T & T & F & F\\
+                           T & T & T & T & F & T & T
+      \end{tabular}\quad
       \begin{tabular}{ll}
         $\land$           & AND\\
         $\lor$            & OR\\
-        $\uparrow$        & NAND\\
-        $\veebar$         & EXOR\\
+        $\veebar$         & EX-OR\\
+        $\uparrow$        & NAND (not AND)\\
         $\Rightarrow$     & Implication\\
         $\Leftrightarrow$ & Equivalence
       \end{tabular}
-      \caption{Binary operators}
+      \caption{Some binary operators}
     \end{table}
+
+\begin{remark}
+  All higher order operators can be constructed from the single NAND operator.
+\end{remark}
 
 We point out the importance of the implication arrow, which is frequently ill-understood. The implication arrow is a binary operator that takes two propositions and constructs a new one that, in total, is true or false, as defined in the previous table.
 \begin{remark}
   From the implication operator, one can conclude anything based on false assumptions, also known as ''ex falso quodlibet''.
 \end{remark}
-Then, the question is: why on Earth would you define the implication arrow like this? The answer is hidden in the following theorem: 
+Then one may wonder why on Earth would you define the implication arrow like this. The answer is hidden in the following theorem: 
 \begin{theorem}
-  \begin{equation}
-    (p \Rightarrow q) \Leftrightarrow ((\neg q)\Rightarrow (\neg p))
-  \end{equation}
+  Let $p$, $q$ be propositions. Then $(p \Rightarrow q) \Leftrightarrow ((\neg q)\Rightarrow (\neg p))$.
 \end{theorem}
+\newpage
+\begin{proof}
+  We need only to construct the truth table and see that the two last propositions are identical:
+    \begin{table}[h]
+      \centering
+      \begin{tabular}{c|c||c|c|c|c}
+        $p$ & $q$ & $\neg p$ & $ \neg q$ & $p \Rightarrow q$ & $(\neg q) \Rightarrow (\neg p)$ \\
+        \hline
+          \rule{0pt}{12pt} F & F & T & T & T & T\\
+                           F & T & T & F & T & T\\
+                           T & F & F & T & F & F\\
+                           T & T & F & F & T & T
+      \end{tabular}
+    \end{table}
+
+\end{proof}
+
 \begin{corollary}
-  We can prove assertions by way of contradiction. E.g. assume that p is true and we want to prove that q is true. Then, what we can do instead, and is fully equivalent, is to assume that what we want to prove is not true, and then prove that that means that the assumption is not true. Then we say we have a contradiction and q must have been true. Proof: construct a truth table.
+  We can prove assertions by way of contradiction. E.g. assume that $p$ is true and we want to prove that $q$ is true. Then, what we can do instead, and is fully equivalent, is to assume that what we want to prove is not true, and then prove that the assumption is not true. Then we say we have a contradiction and $q$ must have been true.
 \end{corollary}
 
-\begin{remark}
-  All higher order operators can be constructed from the single NAND operator.
-\end{remark}
 
 \section{Predicate logic}
 \begin{mydef}
