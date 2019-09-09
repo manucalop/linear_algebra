@@ -1,15 +1,16 @@
 \documentclass[root.tex]{subfiles}
 \begin{document}
-\chapter{Axiomatic set theory}
 
-Any space, such as a physical space, an Euclidean space, a space of configurations, a Hilbert space, etc. is a set "of points" equipped with further structure. But what precisely is a set? Well, one can think of a set as a collection of elements, but that raises the question of what a collection is and what elements are. So certainly we need to do better and, as a fundamental problem, if we start writing a book about mathematics whose pages are all empty yet, what could the first definition be? For a definition you need notions that you already have in order to define a new notion but, if you don't have any notion yet, how do you start? The trick is to start axiomatically, and to do so we will write axiomatic set theory. Again, this raises the question, in what language could you possibly do that? Then, we need another building block called propositional logic, which will allow us to write the axioms of set theory. 
+\chapter{Axiomatic set theory}%{{{
 
-\section{Propositional logic}
+Any space, such as the physical space, is a set "of points" equipped with further structure. But what precisely is a set? Well, one can think of a set as a collection of elements, but that raises the question of what a collection is and what elements are. So certainly we need to do better and, as a fundamental problem, if we start writing a book about mathematics whose pages are all empty yet, what could the first definition be? For a definition you need notions that you already have in order to define a new notion but, if you don't have any notion yet, how do you start? The trick is to start axiomatically, and to do so we will write axiomatic set theory. Again, this raises the question, in what language could you possibly do that? Then, we need another building block called propositional logic, which will allow us to write the axioms of set theory. 
+
+\section{Propositional logic}%{{{
 The key notion of propositional logic is a proposition. 
 \begin{mydef}
   A \textbf{proposition} $p$ is a variable\footnote{By this we mean a formal expression, with no extra structure assumed.} that can take the values true (T) or false (F). No other. 
 \end{mydef}
-This is what a proposition is from the point of view of propositional logic. In particular, it is not the task of propositional logic to decide whether a complex statement of the form: \emph{there is extra-terrestrial life} is true or not. Propositional logic already deals with the complete proposition and it just assumes that is either true or false. Certainly, one can build new propositions from given ones by means of \textbf{logical operators}. The simplest kind of logical operators are unary operators. A unary operator takes one proposition and makes from it a new proposition. We define them in the following table:
+This is what a proposition is, from the point of view of propositional logic. In particular, it is not the task of propositional logic to decide whether a complex statement of the form: \emph{there is extra-terrestrial life} is true or not. Propositional logic already deals with the complete proposition and it just assumes that is either true or false. Certainly, one can build new propositions from given ones by means of \textbf{logical operators}. The simplest kind of logical operators are unary operators. A unary operator takes one proposition and makes from it a new proposition. We define them in the following table:
     \begin{table}[h]
       \centering
       \begin{tabular}{c||c|c|c|c}
@@ -83,17 +84,14 @@ Then one may wonder why on Earth would you define the implication arrow like thi
   We can prove assertions by way of contradiction. E.g. assume that $p$ is true and we want to prove that $q$ is true. Then, what we can do instead, and is fully equivalent, is to assume that what we want to prove is not true, and then prove that the assumption is not true. Then we say we have a contradiction and $q$ must have been true.
 \end{corollary}
 
+%}}}
 
-\section{Predicate logic}
+\section{Predicate logic}%{{{
 \begin{mydef}
   A \textbf{predicate} is (informally) a proposition-valued function of some variables(s). In particular, a predicate of two variables is called a relation.
 \end{mydef}
 
-\begin{myex}
-  $P(x) = \{true,\ false\};\ Q(x,y)$ 
-\end{myex}
-
-One can construct new predicates of given ones by means of operators, e.g.
+For example, $Q(x,y)$ is a proposition which value depends on the variables $x$ and $y$. Just like for propositional logic, it is not the task of predicate logic to examine how predicates are built from the variables on which they depend. Since the notions of set theory have not been yet defined, we leave it completely open, and simply consider $x$ and $y$ formal variables, with no extra conditions imposed. As with propositions, we can construct new predicates from given ones by means of the operators defined in the previous section. For example, we might have:
 \begin{myex}
   $Q(x,y,z):\Leftrightarrow P(x) \land R(y,z)$
 \end{myex}
@@ -110,8 +108,9 @@ $$
 $$
 \exists ! \, x : P(x) :\Leftrightarrow (\exists \, x : \forall \, y : P(y) \Leftrightarrow x=y)
 $$
+%}}}
 
-\section{Axiomatic System and theory of proofs}
+\section{Axiomatic System and theory of proofs}%{{{
 
 \begin{mydef}
   An \textbf{axiom} $a$ or assumption is a proposition $p$ taken to be true, i.e. a tautology of $p$ ($a=T(p)$).
@@ -152,8 +151,9 @@ $$
 \begin{theorem}[Godel]
 Any axiomatic system powerful enough to encode elementary arithmetic is either inconsistent or contains an undecidable proposition, i.e.\ a proposition that can be neither proven nor disproven within the system.
 \end{theorem}
+%}}}
 
-\section{The $\in$-relation}
+\section{The $\in$-relation}%{{{
 
 Set theory is built on the postulate that there is a fundamental relation (i.e.\ a predicate of two variables) denoted by $\in$. However, there is no definition of what $\in$ is, or of what a set is. Instead, nine axioms concerning $\in$ and sets formulate the set theory upon which all modern mathematics are built. This axiomatic system is called \textbf{Zermelo-Fraenkel set theory}. As an overview, we have:
 
@@ -171,8 +171,9 @@ Using the $\in$-relation we can immediately define the following relations:
 \item $x = y :\Leftrightarrow (x\subseteq y) \land (y\subseteq x)$
 \item $x \subset y :\Leftrightarrow (x \subseteq y) \land \neg (x = y)$
 \end{itemize}
+%}}}
 
-\section{Zermelo-Fraenkel axioms of set theory}
+\section{Zermelo-Fraenkel axioms of set theory}%{{{
 
 \subsection{Axiom on the $\in$-relation} 
 The expression $x\in y$ is a proposition if, and only if, both $x$ and $y$ are sets.
@@ -219,7 +220,7 @@ $$
 \end{mydef}
 
 \begin{theorem}
-  $\{y \in m \mid P(y)\}$ is a set. This is called \textbf{principle of restricted comprehension} and is a consequence of the axiom of replacement.
+  Let $P(x)$ be a predicate and let $m$ be a set. Then, $\{y \in m \mid P(y)\}$ is a set. This is called \textbf{principle of restricted comprehension} and is a consequence of the axiom of replacement.
 \end{theorem}
 
 The principle of restricted comprehension is not to be confused with the ``principle'' of universal comprehension which states that $\{y \mid P(y)\} $ is a set for any predicate. This has shown to be inconsistent by Russell. Observe that the $y \in m$ condition makes it so that $\{y \in m \mid P(y)\}$ cannot have more elements than $m$ itself.
@@ -292,11 +293,12 @@ $$
 $$
 
 An immediate consequence of this axiom is that there is no set that contains itself as an element.\\
+%}}}
+%}}}
 
+\chapter{Classification of sets}%{{{
 
-
-\section{Classification of sets}
-
+\section{Maps}%{{{
 A recurrent theme in mathematics is the classification of \emph{spaces} by means of structure-preserving \emph{maps} between them. 
 
 \begin{mydef}
@@ -403,8 +405,9 @@ Let $\phi : A \to B$ be a map, let $U,V \subseteq B$ and $C=\{C_j \mid j \in J\}
  and $\mathrm{preim}_\phi(\bigcap C)=\bigcap_{j \in J} \mathrm{preim}_\phi(C_j)$.
  \end{enumerate}
 \end{proposition}
+%}}}
 
-\section{Equivalence relations}
+\section{Equivalence relations}%{{{
 
 \begin{mydef}
 Let $M$ be a set and let $\sim$ be a relation such that the following conditions are satisfied:
@@ -461,7 +464,135 @@ Due to the axiom of choice, there exists a complete system of representatives fo
 Care must be taken when defining maps whose domain is a quotient set if one uses representatives to define the map. In order for the map to be \textbf{well-defined} one needs to show that the map is independent of the choice of representatives. 
 \end{remark}
 
+%}}}
 
+\section{\texorpdfstring{Construction of $\mathbb{N}$, $\mathbb{Z}$, $\mathbb{Q}$ and $\mathbb{R}$}{Construction of N, Z, Q and R}}%{{{
+
+ Recall that, invoking the axiom of infinity, we defined:
+ $$
+ \mathbb{N} := \{0,1,2,3,\ldots\},
+ $$
+ where:
+ $$
+ 0 :=\emptyset , \quad 1  := \{\emptyset\},\quad 2:= \{\{\emptyset\}\}, \quad 3 := \{\{\{\emptyset\}\}\} , \quad \ldots
+ $$
+ We would now like to define an addition operation on $\mathbb{N}$ by using the axioms of set theory. We will need some preliminary definitions.
+
+\begin{mydef}
+  The \emph{successor map} $S$ on $\mathbb{N}$ is defined by:
+  \begin{align*}
+   S :\ & \mathbb{N}  \rightarrow \mathbb{N}\\
+       & n \mapsto \{n\}
+  \end{align*}
+\end{mydef}
+
+\begin{mydef}
+  The \emph{predecessor map} $S$ on $\mathbb{N}^* := \mathbb{N}\setminus \emptyset$ is defined by:
+  \begin{align*}
+   S :\ & \mathbb{N}  \rightarrow \mathbb{N}\\
+       & n \mapsto m \quad \text{such that } \{m\} = n
+  \end{align*}
+\end{mydef}
+
+\begin{mydef}
+Let $n \in \mathbb{N}$. The \emph{$n$-th power} of $S$, denoted $S^n$, is defined recursively by:
+\begin{align*}
+  &S^n := S \circ S^{P(n)} \qquad \text{if } n \in \mathbb{N}^*\\ 
+  &S^0 := id_\mathbb{N}
+\end{align*}
+We are now ready to define addition.
+\end{mydef}
+
+\begin{mydef}
+The \emph{addition} operation on $\mathbb{N}$ is the map:
+\begin{align*}
+   + :\ & \mathbb{N} \times \mathbb{N}  \rightarrow  \mathbb{N}\\
+   & (m,n)  \mapsto  m +n:= S^n(m).
+\end{align*}
+\end{mydef}
+
+\begin{mydef}
+Let $\sim$ be the equivalence relation on $\mathbb{N}\times \mathbb{N}$ defined by:
+$$
+ (m,n) \sim (p,q) :\Leftrightarrow m+q = p+n.
+$$
+\end{mydef}
+
+\begin{mydef}
+ We define the set of \emph{integers} by:
+$$
+\mathbb{Z}\index{$\mathbb{Z}$}:=(\mathbb{N}\times\mathbb{N})/\!\sim.
+$$
+\end{mydef}
+
+The intuition behind this definition is that the pair $(m,n)$ stands for ``$m-n$''. In other words, we represent each integer by a pair of natural numbers whose (yet to be defined) difference is precisely that integer. There are, of course, many ways to represent the same integer with a pair of natural numbers in this way. For instance, the integer $-1$ could be represented by $(1,2)$, $(2,3)$, $(112,113)$, \ldots
+
+\begin{remark}
+ In a first introduction to set theory it is not unlikely to find the claim that the natural numbers are part of the integers, i.e.\ $\mathbb{N} \subseteq \mathbb{Z}$. However, according to our definition, this is obviously nonsense since $\mathbb{N}$ and $\mathbb{Z}:=(\mathbb{N}\times\mathbb{N})/\!\sim$ contain entirely different elements. What is true is that $\mathbb{N}$ can be \emph{embedded} into $\mathbb{Z}$, i.e.\ there exists an \emph{inclusion map} $\iota$, given by:
+\begin{align*}
+  \iota :\ & \mathbb{N} \hookrightarrow  \mathbb{Z}\\
+ & n  \mapsto  [(n,0)]
+\end{align*}
+and it is in this sense that $\mathbb{N}$ is included in $\mathbb{Z}$.
+\end{remark}
+
+\begin{mydef}
+Let $n := [(n,0)] \in \mathbb{Z}$. Then we define the \emph{inverse} of $n$ to be $-n:=[(0,n)]$. 
+\end{mydef}
+
+We would now like to inherit the $+$ operation from $\mathbb{N}$.
+
+\begin{mydef}
+We define the \emph{addition of integers} $+_\mathbb{Z}:\ \mathbb{Z}\times\mathbb{Z}\to\mathbb{Z}$ by:
+$$
+[(m,n)] +_\mathbb{Z} [(p,q)] := [(m+p,n+q)].
+$$
+\end{mydef}
+
+
+\begin{mydef}
+In a similar fashion, we define the set of \emph{rational numbers} by:
+$$
+\mathbb{Q}\index{$mathbb{Q}$} := (\mathbb{Z}\times\mathbb{Z}^*)/\!\sim,
+$$
+where $\mathbb{Z}^*:=\mathbb{Z}\setminus\{0\}$ and $\sim$ is a relation on $\mathbb{Z}\times\mathbb{Z}^*$ given by:
+$$
+(p,q)\sim(r,s) :\Leftrightarrow ps = qr,
+$$
+assuming that a \emph{multiplication} operation on the integers has already been defined.
+\end{mydef}
+
+ We also have the \emph{canonical embedding} of $\mathbb{Z}$ into $\mathbb{Q}$:
+\begin{align*}
+ \iota :\ & \mathbb{Z}  \hookrightarrow  \mathbb{Q}\\
+ & p  \mapsto  [(p,1)]
+\end{align*}
+
+\begin{mydef}
+We define the \emph{addition of rational numbers} $+_\mathbb{Q}:\ \mathbb{Q}\times\mathbb{Q}\rightarrow\mathbb{Q}$ by:
+$$
+[(p,q)] +_\mathbb{Q} [(r,s)] := [(ps+rq,qs)]
+$$
+and \emph{multiplication of rational numbers} by:
+$$
+[(p,q)] \cdot_\mathbb{Q} [(r,s)] := [(pr,qs)],
+$$
+where the operations of addition and multiplication that appear on the right hand sides are the ones defined on $\mathbb{Z}$. It is again necessary (but easy) to check that these operations are both well-defined.
+\end{mydef}
+
+There are many ways to construct the reals from the rationals. One is to define a set $\mathcal{A}$ of \emph{almost homomorphisms} on $\mathbb{Z}$ and hence define:
+$$
+\mathbb{R}\index{$\mathbb{R}$} := \mathcal{A}/\!\sim,
+$$
+where $\sim$ is a ``suitable'' equivalence relation on $\mathcal{A}$.
+
+%}}}
+
+%}}}
+
+\chapter{Algebraic structures}%{{{
+
+%}}}
 
 \onlyinsubfile{
 \bibliography{bibliography} %Same name as .bib
