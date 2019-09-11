@@ -299,7 +299,7 @@ An immediate consequence of this axiom is that there is no set that contains its
 \chapter{Classification of sets}%{{{
 
 \section{Maps}%{{{
-A recurrent theme in mathematics is the classification of \emph{spaces} by means of structure-preserving \emph{maps} between them. 
+A recurrent theme in mathematics is the classification of \emph{spaces} by means of structure-preserving \emph{maps} (homomorphisms) between them. 
 
 \begin{mydef}
   Let $A,B$ be sets. A \textbf{map} $\phi : A \to B$ is a relation such that for each $a \in A$ there exists exactly one $b \in B$ such that $\phi(a,b)$ holds.
@@ -591,8 +591,118 @@ where $\sim$ is a ``suitable'' equivalence relation on $\mathcal{A}$.
 %}}}
 
 \chapter{Algebraic structures}%{{{
+\section{Group}
+\begin{mydef}
+  A \emph{group} $(G,\bullet)$ is a set $G$ equipped with a map
+  \begin{align*}
+    \bullet\ :\ &G \times G \rightarrow G\\
+                &(g_1, g_2) \mapsto g_1 \bullet g_2
+  \end{align*}
+  that satisfies $ANI$ (Associative, Neutral element and Inverse element)
+\end{mydef}
+\section{Ring}
+\begin{mydef}
+  A \emph{ring} $(R, +, \cdot )$ is a set $R$ equipped with two maps
+  \begin{align*}
+    +      &:\ R \times R \rightarrow R\\
+    \cdot\ &:\ R \times R \rightarrow R\\
+  \end{align*}
+  that satisfies $C^{+}A^{+}N^{+}I^{+}$ for $R$ and $A^{\cdot}N^{\cdot}$ for $R\setminus \{0\}$ (Commutative). 
+\end{mydef}
+
+\section{Algebraic field}
+\begin{mydef}
+  An \emph{algebraic field} $(K, +, \cdot )$ is a set $K$ equipped with two maps
+  \begin{align*}
+    +      &:\ K \times K \rightarrow K\\
+    \cdot\ &:\ K \times K \rightarrow K\\
+  \end{align*}
+  that satisfies $C^{+}A^{+}N^{+}I^{+}$ for $K$ and $C^{\cdot}A^{\cdot}N^{\cdot}I^{\cdot}$ for $K\setminus \{0\}$ 
+\end{mydef}
+\section{Module}
+\begin{mydef}
+  A \emph{R-module} $(M, +_M, \cdot_M )$ over a field $R$ is a set $M$ equipped with the maps
+  \begin{align*}
+    +_M      &:\ M \times M \rightarrow M\\
+    \cdot_M\ &:\ R \times M \rightarrow M\\
+             & k \cdot_M v \mapsto k\cdot_R v\\
+  \end{align*}
+  that satisfies $C^{+_M}A^{+_M}N^{+_M}I^{+_M}$ and $ADDU^{\cdot_M}$. 
+\end{mydef}
+\section{Vector space}
+\begin{mydef}
+  A \emph{K-vector space} $(V, +_V, \cdot_V )$ over a field $K$ is a set $V$ equipped with the maps
+  \begin{align*}
+    +_V      &:\ V \times V \rightarrow V\\
+    \cdot_V\ &:\ K \times V \rightarrow V\\
+             & k \cdot_V v \mapsto k\cdot_K v\\
+  \end{align*}
+  that satisfies $C^{+_V}A^{+_V}N^{+_V}I^{+_V}$ and $ADDU^{\cdot_V}$. A module is a vector space structure over a ring, i.e. non-commutative $\cdot_R$.
+\end{mydef}
+\begin{mydef}
+  $U \subset V$ is a vector subspace if $\forall u, u_1, u_2 \in U$  
+  \begin{align*}
+    &u_1 + u_2 \in U\\
+    &\lambda u \in U
+  \end{align*}
+\end{mydef}
 
 %}}}
+
+\chapter{Linear maps}%{{{
+  \section{Linear Map}
+  \begin{mydef}
+    Let $V,W$ be vector spaces. A map $f : V \rightarrow W$ is linear if
+    \begin{align*}
+      & \forall v_1, v_2 \in V && f(v_1 +_V v_2) = f(v_1) +_W f(v_2)\\
+      & \forall \lambda \in K,\ v\in V && f(\lambda \cdot_V V) = \lambda \cdot_W f(v)
+    \end{align*}
+  \end{mydef}
+  \begin{mydef}
+    Linear maps are the structure-preserving maps of vector spaces, i.e. the vector-space homomorphisms. The set containing all linear maps is defined as:
+    $$
+    Hom(V,W) := \{ f : V \tilde{\longrightarrow} W\}
+    $$
+  \end{mydef}
+  \begin{mydef}
+    $(Hom(V,W), +_H, \cdot_H)$ can be made into a vector space by inducing the operators from $W$.
+  \end{mydef}
+  \begin{mydef}
+    A linear map is called endomorphism if $V=W$
+  \end{mydef}
+  \begin{mydef}
+    A bijective linear map is called a vector space isomorphism
+    $$
+    V \cong_{vec} W \Leftrightarrow \exists f : V \tilde{\longrightarrow} W | f \text{ bijective}
+    $$
+  \end{mydef}
+  \subsection*{Terminology}
+  \begin{mydef}
+    Endomorphisms $\equiv End(V) := Hom(V,V)$
+  \end{mydef}
+  \begin{mydef}
+    Automorphisms $\equiv Aut(V) := End(V)$ invertible.
+  \end{mydef}
+  \begin{mydef}
+    Dual vector space $\equiv V^* := Hom(V,K)$
+  \end{mydef}
+
+  \section{Linear independence. Basis}
+  \section{Kernel and image of a linear map}
+  % \section{Vector subspace}
+
+%}}}
+
+\chapter{Multilinear maps: Tensors}%{{{
+
+%}}}
+
+\chapter{Topological spaces}
+\chapter{Topological manifolds}
+\chapter{Differentiable manifolds}
+\chapter{Lie groups and their Lie algebras}
+\chapter{Construction of \emph{SE(3)}}
+
 
 \onlyinsubfile{
 \bibliography{bibliography} %Same name as .bib
