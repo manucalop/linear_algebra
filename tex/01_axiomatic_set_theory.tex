@@ -598,7 +598,7 @@ where $\sim$ is a ``suitable'' equivalence relation on $\mathcal{A}$.
     \bullet\ :\ &G \times G \rightarrow G\\
                 &(g_1, g_2) \mapsto g_1 \bullet g_2
   \end{align*}
-  that satisfies $ANI$ (Associative, Neutral element and Inverse element)
+  that satisfies $ANI$ (Associative, Neutral element and Inverse element). If the map is commutative $(CANI)$, the group is said to be commutative or abelian.
 \end{mydef}
 \section{Ring}
 \begin{mydef}
@@ -607,43 +607,43 @@ where $\sim$ is a ``suitable'' equivalence relation on $\mathcal{A}$.
     +      &:\ R \times R \rightarrow R\\
     \cdot\ &:\ R \times R \rightarrow R\\
   \end{align*}
-  that satisfies $C^{+}A^{+}N^{+}I^{+}$ for $R$ and $A^{\cdot}N^{\cdot}$ for $R\setminus \{0\}$ (Commutative). 
+  that satisfies $C^{+}A^{+}N^{+}I^{+}$ for $R$ and $A^{\cdot}N^{\cdot}D^{\cdot}_{+}$  for $R\setminus \{0\}$. Where $D^{\cdot}_+$ means $\cdot$ is distributive wrt $+$.
 \end{mydef}
 
-\section{Algebraic field}
+\section{Field}
 \begin{mydef}
-  An \emph{algebraic field} $(K, +, \cdot )$ is a set $K$ equipped with two maps
+  A \emph{field} (algebraic field) $(K, +, \cdot )$ is a set $K$ equipped with two maps
   \begin{align*}
     +      &:\ K \times K \rightarrow K\\
     \cdot\ &:\ K \times K \rightarrow K\\
   \end{align*}
-  that satisfies $C^{+}A^{+}N^{+}I^{+}$ for $K$ and $C^{\cdot}A^{\cdot}N^{\cdot}I^{\cdot}$ for $K\setminus \{0\}$ 
+  that satisfies $C^{+}A^{+}N^{+}I^{+}$ for $K$ and $C^{\cdot}A^{\cdot}N^{\cdot}I^{\cdot}D^{\cdot}_{+}$ for $K\setminus \{0\}$ 
 \end{mydef}
 \section{Module}
 \begin{mydef}
-  A \emph{R-module} $(M, +_M, \cdot_M )$ over a field $R$ is a set $M$ equipped with the maps
+  A \emph{R-module} $(M, \oplus, \odot )$ over a ring $(R, +, \cdot)$ is a set $M$ equipped with the maps
   \begin{align*}
-    +_M      &:\ M \times M \rightarrow M\\
-    \cdot_M\ &:\ R \times M \rightarrow M\\
-             & k \cdot_M v \mapsto k\cdot_R v\\
+    \oplus      :\ &M \times M \rightarrow M\\
+    \odot       :\ &R \times M \rightarrow M\\
+                &\ r \odot m \mapsto r\cdot m\\
   \end{align*}
-  that satisfies $C^{+_M}A^{+_M}N^{+_M}I^{+_M}$ and $ADDU^{\cdot_M}$. 
+  that satisfies $C^{\oplus}A^{\oplus}N^{\oplus}I^{\oplus}$ and $AD^{\odot}_+D^\odot_{\oplus}U^{\odot}$. $U$ stands for unitary.
 \end{mydef}
 \section{Vector space}
 \begin{mydef}
-  A \emph{K-vector space} $(V, +_V, \cdot_V )$ over a field $K$ is a set $V$ equipped with the maps
+  A \emph{K-vector space} $(V, \oplus, \odot )$ over a field $(K,+,\cdot)$ is a set $V$ equipped with the maps
   \begin{align*}
-    +_V      &:\ V \times V \rightarrow V\\
-    \cdot_V\ &:\ K \times V \rightarrow V\\
-             & k \cdot_V v \mapsto k\cdot_K v\\
+    \oplus  :\ &V \times V \rightarrow V\\
+    \odot   :\ &K \times V \rightarrow V\\
+            &\ k \odot v \mapsto k\cdot v\\
   \end{align*}
-  that satisfies $C^{+_V}A^{+_V}N^{+_V}I^{+_V}$ and $ADDU^{\cdot_V}$. A module is a vector space structure over a ring, i.e. non-commutative $\cdot_R$.
+  that satisfies $C^{\oplus}A^{\oplus}N^{\oplus}I^{\oplus}$ and $AD^{\odot}_+D^\odot_{\oplus}U^{\odot}$. A module is a vector space structure over a ring, i.e. non-commutative $\cdot$.
 \end{mydef}
 \begin{mydef}
   $U \subset V$ is a vector subspace if $\forall u, u_1, u_2 \in U$  
   \begin{align*}
-    &u_1 + u_2 \in U\\
-    &\lambda u \in U
+    &u_1 \oplus u_2 \in U\\
+    &\lambda \odot u \in U
   \end{align*}
 \end{mydef}
 
@@ -652,10 +652,10 @@ where $\sim$ is a ``suitable'' equivalence relation on $\mathcal{A}$.
 \chapter{Linear maps}%{{{
   \section{Linear Map}
   \begin{mydef}
-    Let $V,W$ be vector spaces. A map $f : V \rightarrow W$ is linear if
+    Let $(V,\oplus,\odot),(W,\boxplus,\boxdot)$ be vector spaces over the same field $(K, +,\cdot)$. A map $f : V \rightarrow W$ is linear if
     \begin{align*}
-      & \forall v_1, v_2 \in V && f(v_1 +_V v_2) = f(v_1) +_W f(v_2)\\
-      & \forall \lambda \in K,\ v\in V && f(\lambda \cdot_V V) = \lambda \cdot_W f(v)
+      & \forall v_1, v_2 \in V && f(v_1 \oplus v_2) = f(v_1) \boxplus f(v_2)\\
+      & \forall \lambda \in K,\ v\in V && f(\lambda \odot V) = \lambda \boxdot f(v)
     \end{align*}
   \end{mydef}
   \begin{mydef}
@@ -673,7 +673,7 @@ where $\sim$ is a ``suitable'' equivalence relation on $\mathcal{A}$.
   \begin{mydef}
     A bijective linear map is called a vector space isomorphism
     $$
-    V \cong_{vec} W \Leftrightarrow \exists f : V \tilde{\longrightarrow} W | f \text{ bijective}
+    V \cong_{vec} W \Leftrightarrow \exists f : V \tilde{\longrightarrow} W \mid f \text{ bijective}
     $$
   \end{mydef}
   \subsection*{Terminology}
@@ -688,8 +688,35 @@ where $\sim$ is a ``suitable'' equivalence relation on $\mathcal{A}$.
   \end{mydef}
 
   \section{Linear independence. Basis}
+  \begin{mydef} 
+    Let $V$ be a vector space. Then, $S = \lbrace{s_1, \ldots, s_n \rbrace}\subseteq V$ is \textbf{linearly independent} if the linear combination of the vectors $s_i$ is only degenerate for the degenerate linear combination. Mathematically,
+    $$
+    \sum_{i=1}^n \lambda_i s_i = 0, \lambda_i \in K \Rightarrow \lambda_i = 0, \forall i = 1, \ldots, n
+    $$
+  \end{mydef} 
+  \begin{mydef}
+    $S\subset V$ is a \textbf{generating system} iff
+    $$
+    \forall v \in V\ \exists \lbrace \lambda_1, \ldots, \lambda_n \rbrace : \sum_{i=1}^n \lambda_i s_i = v
+    $$
+    which is denoted by $V = \langle S \rangle$
+  \end{mydef}
+  \begin{mydef}
+    A linearly independent generating system is called a \textbf{basis}.
+  \end{mydef} 
+  \subsection{Change of basis}
+
   \section{Kernel and image of a linear map}
-  % \section{Vector subspace}
+  \begin{mydef}
+    Let $f:V\rightarrow W$ be a linear map. Then, its \textbf{kernel} is defined as:
+    $$
+      Ker(f) := x \in V : f(x) = 0
+    $$
+    The kernel $Ker(f)$ and image $Im(f)$ are vector subspaces of $V$ and $W$ respectively, with
+    $$
+    dim(Ker(f)) + dim(Im(f)) = dim(V)
+    $$
+  \end{mydef} 
 
 %}}}
 
@@ -697,12 +724,635 @@ where $\sim$ is a ``suitable'' equivalence relation on $\mathcal{A}$.
 
 %}}}
 
-\chapter{Topological spaces}
-\chapter{Topological manifolds}
-\chapter{Differentiable manifolds}
-\chapter{Lie groups and their Lie algebras}
-\chapter{Construction of \emph{SE(3)}}
+\chapter{Topological spaces}%{{{
 
+\section{Topology}
+
+A topology on a set provides the weakest structure in order to define the notions of convergence of sequences, and continuity of maps. 
+
+\begin{mydef}
+  Let $M$ be a set. A \textbf{topology}\index{topology} on $M$ is a set $\mathcal{O} \subseteq \mathcal{P}(M)$ such that:
+\begin{enumerate}
+\item[i)] $\emptyset \in \mathcal{O}$ and $M \in \mathcal{O}$;
+\item[ii)] $\{U,V\}\subseteq \mathcal{O} \Rightarrow \bigcap\, \{U,V\} \in \mathcal{O}$;
+\item[iii)] $C \subseteq \mathcal{O} \Rightarrow \bigcup C \in \mathcal{O}$.
+\end{enumerate}
+
+The pair $(M,\mathcal{O})$ is called a \textbf{topological space}\index{topological space}. If we write ``let $M$ be a topological space'' then some topology $\mathcal{O}$ on $M$ is assumed.
+\end{mydef}
+
+
+\begin{remark}
+Unless $|M|=1$, there are (usually many) different topologies $\mathcal{O}$ that one can choose on the set $M$.
+\end{remark}
+
+\begin{myex}
+Let $M = \{1,2,3\}$. Then $\mathcal{O}=\{\emptyset,\{1\},\{2\},\{1,2\},\{1,2,3\}\}$ is a topology on $M$.
+\end{myex}
+
+\begin{myex}
+Let $M$ be a set. Then $\mathcal{O}=\{\emptyset , M\}$ is a topology on $M$. This is called the \textbf{chaotic topology}\index{topology!chaotic} and can be defined on any set.
+\end{myex}
+
+\begin{myex}
+  Let $M$ be a set. Then $\mathcal{O}=\mathcal{P}(M)$ is a topology on $M$. This is called the \textbf{discrete topology}\index{topology!discrete} and can be defined on any set.
+\end{myex}
+
+\begin{mydef}
+For any $x\in\mathbb{R}^d$ and any $r \in \mathbb{R}^+:=\{s\in\mathbb{R}\mid s>0\}$, we define the \textbf{open ball} of radius $r$ around the point $x$:
+$$
+B_r(x) := \bigl\{y\in \mathbb{R}^d \mid \|y_i-x_i\|_{2n} <r \bigr\},
+$$
+where $\|y_i-x_i\|_{2n}=^{2n}\sqrt{\sum_{i=1}^d (y_i-x_i)^{2n}}$ denotes the 2n-norm for any $n \in \mathbb{N}$ 
+\end{mydef}
+
+\begin{mydef}
+  Let $M = \mathbb{R}^d$. Then, the \textbf{standard topology}\index{standard topology}\index{topology!standard}   $\mathcal{O}_\mathrm{std}$\index{$\mathcal{O}_\mathrm{std}$}, is defined by:
+$$
+U \in \mathcal{O}_\mathrm{std} :\Leftrightarrow \forall \, p \in U : \exists \, r \in \mathbb{R} ^+ : B_r(p) \subseteq U.
+$$
+\end{mydef}
+
+
+We now give some common terminology regarding topologies.
+
+\begin{mydef}
+  Let $\mathcal{O}_1$ and $\mathcal{O}_2$ be two topologies on a set $M$. If $\mathcal{O}_1 \subset \mathcal{O}_2$, then we say that $\mathcal{O}_1$ is a \textbf{coarser} (or \textbf{weaker}) topology than $\mathcal{O}_2$. Equivalently, we say that $\mathcal{O}_2$ is a \textbf{finer} (or \textbf{stronger}) topology than $\mathcal{O}_1$.
+\end{mydef}
+Clearly, the chaotic topology is the coarsest topology on any given set, while the discrete topology is the finest.
+\begin{mydef}
+  Let $(M,\mathcal{O})$ be a topological space. A subset $S$ of $M$ is said to be \textbf{open (with respect to $\mathcal{O}$)}\index{open set} if $S \in \mathcal{O}$ and \textbf{closed (with respect to $\mathcal{O}$)}\index{closed set} if $M\backslash S \in \mathcal{O}$. 
+\end{mydef}
+Notice that the notions of open and closed sets, as defined, are not mutually exclusive. A set could be both or neither, or one and not the other.
+\begin{myex}
+Let $(M,\mathcal{O})$ be a topological space. Then $\emptyset$ is open since $\emptyset \in \mathcal{O}$. However, $\emptyset$ is also closed since $M\backslash \emptyset = M \in \mathcal{O}$. Similarly for $M$.
+\end{myex}
+\begin{myex}
+Let $M = \{a,b,c\}$ and let $\mathcal{O}=\{\emptyset,\{a\},\{a,b\},\{a,b,c\}\}$. Then $\{a\}$ is open but not closed, $\{b,c\}$ is closed but not open, and $\{b\}$ is neither open nor closed.
+\end{myex}
+
+
+\section{Construction of new topologies from given ones}
+
+\begin{mydef}
+Let $(M,\mathcal{O})$ be a topological space and let $N\subset M$. Then:
+$$
+\mathcal{O}|_N := \{U\cap N \mid U \in \mathcal{O}\} \subseteq \mathcal{P}(N)
+$$
+is a topology on $N$ called the \textbf{induced (subset) topology}\index{topology!induced}.
+\end{mydef}
+
+\begin{mydef}
+Let $(M,\mathcal{O})$ be a topological space and let $\sim$ be an equivalence relation on $M$. Then, the quotient set:
+$$
+M/\!\sim \ = \{[m]\in \mathcal{P}(M) \mid m \in M\}
+$$
+can be equipped with the \textbf{quotient topology}\index{quotient topology}\index{topology!quotient} $\mathcal{O}_{M/\sim}$ defined by:
+$$
+\mathcal{O}_{M/\sim} := \{U \in M/\!\sim \ \mid \bigcup U = \bigcup_{[a]\in U}[a] \in \mathcal{O} \}.
+$$
+\end{mydef}
+
+An equivalent definition of the quotient topology is as follows. Let $q: M \to M/\!\sim$ be the map:
+\begin{equation}
+  \begin{aligned}
+q : & M & \to & M/\!\sim \\
+& m & \mapsto & [m]
+  \end{aligned}
+\end{equation}
+
+Then we have:
+$$
+\mathcal{O}_{M/\!\sim} := \{U \in M/\!\sim \ \mid \mathrm{preim}_q(U) \in \mathcal{O} \}.
+$$
+
+\begin{myex}
+Let $\sim$ be the equivalence relation on $\mathbb{R}$ defined by:
+$$
+x\sim y :\Leftrightarrow \exists \, n \in \mathbb{Z} : x = y + 2\pi n. 
+$$
+Then the circle can be defined as the set $S^1:=\mathbb{R}/\!\sim$ equipped with the quotient topology.
+\end{myex}
+
+
+\begin{mydef}
+Let $(A,\mathcal{O}_A)$ and $(B,\mathcal{O}_B)$ be topological spaces. Then the set $\mathcal{O}_{A\times B}$ defined implicitly by:
+$$
+U \in \mathcal{O}_{A\times B} :\Leftrightarrow \forall \, p \in U : \exists \, (S,T) \in \mathcal{O}_A\times \mathcal{O}_B : S\times T \subseteq U
+$$
+is a topology on $A\times B$ called the \textbf{product topology}\index{topology!product}.
+\end{mydef}
+
+
+\begin{remark}
+Using the previous definition, one can check that the standard topology on $\mathbb{R}^d$ satisfies:
+$$
+\mathcal{O}_\mathrm{std} = \mathcal{O}_{\underbrace{\scriptstyle \mathbb{R} \times\mathbb{R}\times\cdots\times\mathbb{R}}_\text{ $d$ times}}.
+$$
+
+\end{remark}
+
+
+\section{Convergence}
+
+\begin{mydef}
+  Let $M$ be a set. A \textbf{sequence}\index{sequence} (of points) in $M$ is a function $q : \mathbb{N} \to  M$.
+\end{mydef}
+
+\begin{mydef}
+Let $(M,\mathcal{O})$ be a topological space. A sequence $q$ in $M$ is said to \textbf{converge}\index{convergence} against a \textbf{limit point}\index{limit point} $a\in M$ if:
+$$
+\forall \, U \in \mathcal{O} : a \in U \Rightarrow \exists \, N \in \mathbb{N} : \forall \, n > N : q(n) \in U.
+$$
+Where $U$ is called an \textbf{open neighbourhood}\index{neighbourhood} of $a$ or $U(a)$. 
+\end{mydef}
+
+\begin{myex}
+  Consider the chaotic topological space $(M,\{\emptyset,M\})$. Then every sequence in $M$ converges to every point in $M$. 
+\end{myex}
+
+\begin{myex}
+  Consider the discrete topological space $(M,\mathcal{P}(M))$. Then only definitely constant sequences converge. 
+\end{myex}
+
+\begin{theorem}
+Consider the topological space $(\mathbb{R}^d,\mathcal{O}_\mathrm{std})$. Then, a sequence $q: \mathbb{N} \to \mathbb{R}^d$ converges against $a\in \mathbb{R}^d$ if:
+$$
+\forall\, \varepsilon >0 : \exists \, N \in \mathbb{N} : \forall \, n > N : \|q(n)-a\|_2<\varepsilon.
+$$
+\end{theorem}
+
+\section{Continuity}
+
+\begin{mydef}
+Let $(M,\mathcal{O}_M)$ and $(N,\mathcal{O}_N)$ be topological spaces and let $\phi: M\to N$ be a map. Then, $\phi$ is said to be \textbf{continuous}\index{continuity}\index{map!continuous} (with respect to the topologies $\mathcal{O}_M$ and $\mathcal{O}_N$) if the pre-images of open sets are open sets, i.e:
+$$
+\forall \, S \in \mathcal{O}_N \, , \ \mathrm{preim}_\phi(S) \in \mathcal{O}_M ,
+$$
+
+\end{mydef}
+
+\begin{myex}
+If $M$ is equipped with the discrete topology, or $N$ with the chaotic topology, then any map $\phi: M \to N$ is continuous. 
+\end{myex}
+
+\begin{mydef}
+Let $(M,\mathcal{O}_M)$ and $(N,\mathcal{O}_N)$ be topological spaces. A bijection $\phi: M\to N$ is called a \textbf{homeomorphism}\index{homeomorphism} if both $\phi: M\to N$ and $\phi^{-1}: N\to M$ are continuous.
+\end{mydef}
+
+$$
+\begin{tikzcd}
+M \arrow[rr, bend left,"\phi"] & & N \arrow[ll, bend left,"\phi^{-1}"]
+\end{tikzcd}
+$$
+
+\begin{mydef}
+If there exists a homeomorphism between two topological spaces $(M,\mathcal{O}_M)$ and $(N,\mathcal{O}_N)$, we say that the two spaces are \textbf{homeomorphic}\index{topological space!homeomorphic} or \textbf{topologically isomorphic}\index{isomorphism!of topological spaces} and we write $(M,\mathcal{O}_M) \cong_\mathrm{top} (N,\mathcal{O}_N)$.
+\end{mydef}
+
+Clearly, if $(M,\mathcal{O}_M) \cong_\mathrm{top} (N,\mathcal{O}_N)$, then $M \cong_{set} N$.
+
+\section{Separation properties}
+%
+\begin{mydef}
+  A topological space $(M,\mathcal{O})$ is said to be \textbf{T1}\index{topological space!T1 property} if for any two distinct points $p,q\in M$, $p\neq q$:
+$$
+\exists \, U(p) \in \mathcal{O} : q \notin U(p).
+$$
+\end{mydef}
+
+\begin{mydef}
+A topological space $(M,\mathcal{O})$ is said to be \textbf{T2} or \textbf{Hausdorff}\index{topological space!Hausdorff} if, for any two distinct points, there exist non-intersecting open neighbourhoods of these two points:
+$$
+\forall \, p,q\in M : p\neq q \Rightarrow \exists \, U(p),V(q)\in \mathcal{O} : U(p)\cap V(q) = \emptyset.
+$$
+\end{mydef}
+%
+\begin{myex}
+  The topological space $(\mathbb{R}^d,\mathcal{O}_\mathrm{std})$ is T2 and hence also T1.
+\end{myex}
+
+\begin{myex}
+The Zariski topology on an algebraic variety is T1 but not T2.
+\end{myex}
+
+\begin{myex}
+The topological space $(M,\{\emptyset,M\})$ does not have the T1 property since for any $p \in M$, the only open neighbourhood of $p$ is $M$ and for any other $q\neq p$ we have $q\in M$. Moreover, since this space is not T1, it cannot be T2 either.
+\end{myex}
+
+\section{Compactness and paracompactness}
+
+\begin{mydef}
+  Let $(M,\mathcal{O})$ be a topological space. A set $C \subseteq \mathcal{P}(M)$ is called a \textbf{cover}\index{cover}\index{topological space!(open) cover} (of $M$) if:
+$$
+\bigcup C = M.
+$$
+Additionally, it is said to be an \textbf{open} cover if $C \subseteq \mathcal{O}$.
+\end{mydef}
+
+\begin{mydef}
+Let $C$ be a cover. Then any subset $\widetilde{C}\subseteq C$ such that $\widetilde{C}$ is still a cover, is called a \textbf{subcover}. Additionally, it is said to be a \textbf{finite} subcover if it is finite as a set.
+\end{mydef}
+
+\begin{mydef}
+A topological space $(M,\mathcal{O})$ is said to be \textbf{compact}\index{compactness}\index{topological space!compact} if every open cover has a finite subcover.
+\end{mydef}
+
+\begin{mydef}
+Let $(M,\mathcal{O})$ be a topological space. A subset $N\subseteq M$ is called \textbf{compact} if the topological space $(N,\mathcal{O}|_N)$ is compact.
+\end{mydef}
+
+\begin{theorem}[Heine-Borel]\index{Heine-Borel theorem}
+Let $\mathbb{R}^d$ be equipped with the standard topology $\mathcal{O}_\mathrm{std}$. Then, a subset of $\mathbb{R}^d$ is compact if, and only if, it is closed and bounded.
+\end{theorem}
+
+A subset $S$ of $\mathbb{R}^d$ is said to be \textbf{bounded}\index{boundedness} if:
+$$
+\exists \, r \in \mathbb{R}^+ : S \subseteq B_r(0). 
+$$
+
+\begin{remark}
+It is also possible to generalize this result to arbitrary metric spaces. A \textbf{metric space}\index{metric space} is a pair $(M,d)$ where $M$ is a set and $d: M\times M \to \mathbb{R}$ is a map such that for any $x,y,z \in M$ the following conditions hold:
+\begin{enumerate}
+\item[i)] $d(x,y) \geq 0$;
+\item[ii)] $d(x,y) = 0 \Leftrightarrow x = y$;
+\item[iii)] $d(x,y) = d(y,x) $;
+\item[iv)] $d(x,y)\leq d(x,z)+d(y,z)$.
+\end{enumerate}
+A metric structure on a set $M$ induces a topology $\mathcal{O}_d$ on $M$ by:
+$$
+U \in \mathcal{O}_d :\Leftrightarrow \forall \, p \in U : \exists \, r \in \mathbb{R}^+ : B_r(p) \subseteq U,
+$$
+where the open ball in a metric space is defined as:
+$$
+B_r(p) := \{x \in M \mid d(p,x) < r\}.
+$$
+In this setting, one can prove that a subset $S\subseteq M$ of a metric space $(M,d)$ is compact if, and only if, it is complete and totally bounded.
+\end{remark}
+
+\begin{myex}
+The interval $[0,1]$ is compact in $(\mathbb{R},\mathcal{O}_\mathrm{std})$. The one-element set containing $(-1,2)$ is a cover of $[0,1]$, but it is also a finite subcover and hence $[0,1]$ is compact from the definition. Alternatively, $[0,1]$ is clearly closed and bounded, and hence it is compact by the Heine-Borel theorem.
+\end{myex}
+
+\begin{myex}
+The set $\mathbb{R}$ is not compact in $(\mathbb{R},\mathcal{O}_\mathrm{std})$. To prove this, it suffices to show that there exists a cover of $\mathbb{R}$ that does not have a finite subcover. To this end, let:
+$$
+C := \{(n,n+1)\mid n \in \mathbb{Z}\} \cup \{(n+\tfrac{1}{2},n+\tfrac{3}{2})\mid n \in \mathbb{Z}\} .
+$$
+
+This corresponds to the following picture.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\node (v2) at (4,0.5) {};
+\node (v1) at (-4.75,0.5) {};
+\draw  (v1) edge (v2);
+\draw [-triangle 60] (v1) edge (v2);
+\node (v3) at (-4.5,1) {};
+\node (v4) at (3.5,1) {};
+\draw  (v3) edge (v4);
+\node (v5) at (-4.5,1.5) {};
+\node (v6) at (3.5,1.5) {};
+\draw  (v5) edge (v6);
+\draw[fill=white]  (-0.5,1) circle (0.15);
+\draw[fill=white]  (-3.5,1) node (v7) {} circle (0.15);
+\draw[fill=white]  (2.5,1) circle (0.15);
+\draw[fill=white]  (-2,1.5) circle (0.15);
+\draw[fill=white]  (1,1.5) circle (0.15);
+\draw  (-3.5,0.62) edge (-3.5,0.38);
+\draw  (-2,0.62) edge (-2,0.38);
+\draw  (-0.5,0.62) edge (-0.5,0.38);
+\draw  (2.5,0.62) edge (2.5,0.38);
+\draw  (1,0.62) edge (1,0.38);
+\node at (-3.5,0) {$-1$};
+\node at (-2,0) {$-\frac{1}{2}$};
+\node at (-0.5,0) {$0$};
+\node at (1,0) {$\frac{1}{2}$};
+\node at (2.5,0) {$1$};
+\node at (3.7,0) {$\mathbb{R}$};
+\node at (-4.8,1.22) {$C\ \Bigl\{$};
+\end{tikzpicture}
+\end{figure}
+
+It is clear that removing even one element from $C$ will cause $C$ to fail to be an open cover of $\mathbb{R}$. Therefore, there is no finite subcover of $C$ and hence, $\mathbb{R}$ is not compact.
+\end{myex}
+
+\begin{theorem}
+Let $(M,\mathcal{O}_M)$ and $(N,\mathcal{O}_N)$ be compact topological spaces. Then $(M\times N,\mathcal{O}_{M\times N})$ is a compact topological space.
+\end{theorem}
+
+\begin{mydef}
+Let $(M,\mathcal{O})$ be a topological space and let $C$ be a cover. A \textbf{refinement}\index{refinement} of $C$ is a cover $R$ such that:
+$$
+\forall \, U \in R : \exists \, V \in C : U \subseteq V .
+$$
+\end{mydef}
+Any subcover of a cover is a refinement of that cover, but the converse is not true in general. A refinement $R$ is said to be:
+\begin{itemize}
+\item \textbf{open} if $R\subseteq \mathcal{O}$;
+\item \textbf{locally finite} if for any $p\in M$ there exists a neighbourhood $U(p)$ such that the set:
+$$
+\{U \in R \mid U \cap U(p) \neq \emptyset\}
+$$
+is finite as a set.
+\end{itemize}
+
+Compactness is a very strong property. Hence often times it does not hold, but a weaker and still useful property, called paracompactness, may still hold.
+
+\begin{mydef}
+A topological space $(M,\mathcal{O})$ is said to be \textbf{paracompact}\index{topological space!paracompact}\index{paracompactness} if every open cover has an open refinement that is locally finite.
+\end{mydef}
+
+\begin{corollary}
+If a topological space is compact, then it is also paracompact.
+\end{corollary}
+
+\begin{mydef}
+A topological space $(M,\mathcal{O})$ is said to be \textbf{metrisable} if there exists a metric $d$ such that the topology induced by $d$ is precisely $\mathcal{O}$, i.e.\ $\mathcal{O}_d=\mathcal{O}$. 
+\end{mydef}
+
+\begin{theorem}[Stone]
+Every metrisable space is paracompact.
+\end{theorem}
+
+\begin{myex}
+The space $(\mathbb{R}^d,\mathcal{O}_\mathrm{std})$ is metrisable since $\mathcal{O}_\mathrm{std}=\mathcal{O}_d$ where $d = \|\cdot\|_2$. Hence it is paracompact by Stone's theorem.
+\end{myex}
+
+\begin{theorem}
+Let $(M,\mathcal{O}_M)$ be a paracompact space and let $(N,\mathcal{O}_N)$ be a compact space. Then $M\times N$ (equipped with the product topology) is paracompact.
+\end{theorem}
+
+\begin{corollary}
+Let $(M,\mathcal{O}_M)$ be a paracompact space and let $(N_i,\mathcal{O}_{N_i})$ be compact spaces for every $1\leq i \leq n$. Then $M\times N_1\times\cdots\times N_n$ is paracompact.
+\end{corollary}
+
+\begin{mydef}
+  Let $(M,\mathcal{O}_M)$ be a topological space. A \textbf{partition of unity}\index{partition of unity}  of $M$ is a set $\mathcal{F}$ of continuous maps from $M$ to the interval $[0,1]$ such that for each $p\in M$ the following conditions hold:
+\begin{enumerate}
+\item[i)] there exists $U(p)$ such that the set $\{f \in \mathcal{F} \mid \forall \, x \in U(p):f(x)\neq 0\}$ is finite;
+\item[ii)] $\sum_{f\in \mathcal{F}}f(p)=1$.
+\end{enumerate}
+If $C$ is an open cover, then $\mathcal{F}$ is said to be \textbf{subordinate} to the cover $C$ if:
+$$
+\forall \, f \in \mathcal{F} : \exists \, U \in C : f(x) \neq 0 \Rightarrow x \in U .
+$$
+\end{mydef}
+
+\begin{theorem}
+Let $(M,\mathcal{O}_M)$ be a Hausdorff topological space. Then $(M,\mathcal{O}_M)$ is paracompact if, and only if, every open cover admits a partition of unity subordinate to that cover.
+\end{theorem}
+
+\begin{myex}
+Let $\mathbb{R}$ be equipped with the standard topology. Then $\mathbb{R}$ is paracompact by Stone's theorem. Hence, every open cover of $\mathbb{R}$ admits a partition of unity subordinate to that cover. As a simple example, consider $\mathcal{F} = \{f,g\}$, where:
+$$
+f(x) = \left\{ \begin{aligned} 0 & \text{ if } x \leq 0\\ x^2 & \text{ if } 0\leq x\leq 1\\ 1 & \text{ if } x \geq 1 \end{aligned} \right.
+\quad \text{and } \quad
+g(x) = \left\{ \begin{aligned} 1 & \text{ if } x \leq 0\\ 1-x^2 & \text{ if } 0\leq x\leq 1\\ 0 & \text{ if } x \geq 1 \end{aligned} \right. 
+$$
+Then $\mathcal{F}$ is a partition of unity of $\mathbb{R}$. Indeed, $f,g: \mathbb{R} \to [0,1]$ are both continuous, condition i) is satisfied since $\mathcal{F}$ itself is finite, and we have $\forall \, x \in \mathbb{R} : f(x)+g(x)=1$.
+
+Let $C:=\{(-\infty,1),(0,\infty)\}$. Then $C$ is an open cover of $\mathbb{R}$ and since:
+$$
+f(x)\neq 0 \Rightarrow x \in (0,\infty) \quad \text{and} \quad g(x) \neq 0 \Rightarrow x \in (-\infty,1),
+$$
+the partition of unity $\mathcal{F}$ is subordinate to the open cover $C$.
+\end{myex}
+
+
+\subsection{Connectedness and path-connectedness}
+
+\begin{mydef}
+A topological space $(M,\mathcal{O})$ is said to be \textbf{connected}\index{connectedness}\index{topological space!connected} unless there exist two non-empty, non-intersecting open sets $A$ and $B$ such that $M=A\cup B$.
+\end{mydef}
+
+\begin{myex}
+  Consider $(\mathbb{R}\setminus \{0\},\mathcal{O}_\mathrm{std}|_{\mathbb{R}\setminus\{0\}})$, i.e.\ $\mathbb{R}\setminus\{0\}$ equipped with the subset topology inherited from $\mathbb{R}$. This topological space is not connected since $(-\infty,0)$ and $(0,\infty)$ are open, non-empty, non-intersecting sets such that $\mathbb{R}\setminus\{0\}=(-\infty,0) \cup (0,\infty)$.
+\end{myex}
+
+\begin{theorem}
+The interval $[0,1]\subseteq\mathbb{R}$ equipped with the subset topology is connected.
+\end{theorem}
+
+\begin{theorem}
+A topological space $(M,\mathcal{O})$ is connected if, and only if, the only subsets that are both open and closed are $\emptyset$ and $M$.
+\end{theorem}
+
+\begin{mydef}
+  A topological space $(M,\mathcal{O})$ is said to be \textbf{path-connected}\index{path-connectedness}\index{topological space!path-connected} if for every pair of points $p,q\in M$ there exists a continuous curve $\gamma:[0,1]\to M$ such that $\gamma(0)=p$ and $\gamma(1)=q$.
+\end{mydef}
+
+\begin{myex}
+The space $(\mathbb{R}^d,\mathcal{O}_\mathrm{std})$ is path-connected. Indeed, let $p,q\in\mathbb{R}^d$ and let:
+$$
+\gamma(\l):=p+\l(q-p).
+$$
+Then $\gamma$ is continuous and satisfies $\gamma(0)=p$ and $\gamma(1)=q$.
+\end{myex}
+
+\begin{myex}
+Let $S:=\{(x,\sin(\tfrac{1}{x}))\mid x\in (0,1]\}\cup \{(0,0)\}$ be equipped with the subset topology inherited from $\mathbb{R}^2$.
+\begin{center}
+\includegraphics[scale=0.7]{img/sinoneoverx}
+\end{center}
+The space $(S,\mathcal{O}_\mathrm{std}|_S)$ is connected but not path-connected.
+\end{myex}
+
+\begin{theorem}
+If a topological space is path-connected, then it is also connected.
+\end{theorem}
+
+\subsection{Homotopic curves and the fundamental group}
+
+\begin{mydef}
+Let $(M,\mathcal{O})$ be a topological space. Two curves $\gamma,\delta:[0,1]\to M$ such that:
+$$
+\gamma(0)=\delta(0) \quad \text{and} \quad \gamma(1)=\delta(1)
+$$
+are said to be \textbf{homotopic}\index{homotopic curves} if there exists a continuous map $h : [0,1]\times[0,1]\to M$ such that for all $\l \in [0,1]$:
+$$
+h(0,\l) = \gamma(\l) \quad \text{and} \quad h(1,\l)=\delta(\l).
+$$
+\end{mydef}
+
+Pictorially, two curves are homotopic if they can be continuously deformed into one another.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[scale=0.8]
+
+\draw  plot[smooth, tension=.999] coordinates {(-3,-0.5) (-2,1) (-0.5,0.5) (1,0) (2.5,0.5) (3.5,1.5) (4.5,3) (6,3) (7.5,2)};
+
+\draw  plot[smooth, tension=.999] coordinates {(-3,-0.5) (-1,-2) (1,-2.5) (3.5,-3) (5,-2.5) (6,-1.5) (7,0.5) (7.5,2)};
+
+\draw[dashed]  plot[smooth, tension=.999] coordinates {(-3,-0.5) (-2,0.5) (-0.5,-0.5) (1,-0.5) (2.5,0) (4,1) (4.5,2) (6,2) (7.5,2)};
+
+\draw[dashed]  plot[smooth, tension=.999] coordinates {(-3,-0.5) (-2,-0.5) (-0.5,-1) (1,-1) (2.5,-1.5) (3.5,-1) (4.5,-0.5) (5.5,0.5) (6.5,1.5) (7.5,2)};
+
+\draw[dashed]  plot[smooth, tension=.999] coordinates {(-3,-0.5) (-1,-1.5) (1,-2) (3.5,-2.5) (4.5,-2) (6,-0.5) (6.5,1) (7.5,2)};
+
+\draw[fill=black]  (-3,-0.5) circle (0.15);
+\draw[fill=black]  (7.5,2) circle (0.15);
+\node at (-3.3,-1.2) {$p$};
+\node at (8,1.5) {$q$};
+\node at (-1.5,1.5) {$\gamma$};
+\node at (2,-0.9) {$h$};
+\node at (2.5,-3.5) {$\delta$};
+\end{tikzpicture}
+\end{figure}
+
+\begin{proposition}
+Let $\gamma \sim \delta :\Leftrightarrow$ ``$\gamma$ and $\delta$ are homotopic''. Then, $\sim$ is an equivalence relation.
+\end{proposition}
+
+\begin{mydef}
+Let $(M,\mathcal{O})$ be a topological space. Then, for every $p\in M$, we define the \textbf{space of loops} at $p$ by:
+$$
+\mathcal{L}_p := \{\gamma:[0,1]\to M \mid \gamma \text{ is continuous and } \gamma(0)=\gamma(1)\}.
+$$
+\end{mydef}
+
+\begin{mydef}
+Let $\mathcal{L}_p$ be the space of loops at $p\in M$. We define the \textbf{concatenation} operation $*: \mathcal{L}_p\times\mathcal{L}_p\to\mathcal{L}_p$ by:
+$$
+(\gamma * \delta) (\l):= \left\{ 
+  \begin{aligned}
+    \gamma(2\l) & \text{if } 0\leq \l \leq \tfrac{1}{2}\\ 
+\delta(2\l-1) & \text{if } \tfrac{1}{2}\leq \l \leq 1 
+\end{aligned} 
+\right.
+$$
+\end{mydef}
+
+\begin{mydef}
+Let $(M,\mathcal{O})$ be a topological space. The \textbf{fundamental group}\index{fundamental group} $\pi_1(p)$\index{$\pi_1(p)$} of $(M,\mathcal{O})$ at $p\in M$ is the set:
+$$
+\pi_1(p) := \mathcal{L}_p/\!\sim\ = \{[\gamma] \mid \gamma \in \mathcal{L}_p\},
+$$
+where $\sim$ is the homotopy equivalence relation, together with the map 
+$$ \begin{aligned}
+\bullet : & \pi_1(p)\times \pi_1(p) &\to &\pi_1(p)\\
+&(\gamma,\delta)&\mapsto & [\gamma]\bullet[\delta]:=[\gamma*\delta] .
+\end{aligned} $$
+\end{mydef}
+
+\begin{remark}
+Recall that a group\index{group} is a pair $(G,\bullet)$ where $G$ is a set and $\bullet : G\times G \to G$ is a map (also called \textbf{binary operation}) such that:
+\begin{enumerate}
+\item[A)] $\forall \, a,b,c \in G : (a\bullet b)\bullet c = a \bullet (b\bullet c)$;
+\item[N)] $\exists \, e \in G : \forall \, g \in G : g \bullet e = e \bullet g = g$;
+\item[I)] $\forall \, g \in G : \exists \, g^{-1}\in G: g \bullet g^{-1} = g^{-1} \bullet g = e$.
+\end{enumerate}
+A group is called \textbf{abelian (or commutative)} if, in addition, satisfies 
+\begin{enumerate}
+\item[C)] $\forall \, a,b \in G : a\bullet b = b \bullet a$
+\end{enumerate}
+
+A \textbf{group isomorphism}\index{isomorphism!of groups} between two groups $(G,\bullet)$ and $(H,\circ)$ is a bijection $\phi: G \to H$ such that:
+$$
+\forall \, a,b \in G:\phi(a \bullet b) = \phi(a)\circ\phi(b).
+$$
+If there exists a group isomorphism between $(G,\bullet)$ and $(H,\circ)$, we say that $G$ and $H$ are (group theoretic) isomorphic and we write $G \cong_\mathrm{grp} H$.
+\end{remark}
+
+The operation $\bullet$ is associative (since concatenation is associative); the neutral element of the fundamental group $(\pi_1(p),\bullet)$ is (the equivalence class of) the constant curve $\gamma_e$ defined by:
+$$ \begin{aligned}
+\gamma_e : & [0,1] & \to & M\\
+& \l & \mapsto & \gamma_e(0) = p
+\end{aligned} $$
+Finally, for each $[\gamma]\in\pi_1(p)$, the inverse under $\bullet$ is the element $[-\gamma]$, where $-\gamma$ is defined by:
+$$ \begin{aligned}
+-\gamma : & [0,1] & \to & M\\
+& \l & \mapsto & \gamma(1-\l)
+\end{aligned} $$
+
+All the previously discussed topological properties are ``boolean-valued'', i.e.\ a topological space is either Hausdorff or not Hausdorff, either connected or not connected, and so on. The fundamental group is a ``group-valued'' property, i.e.\ the value of the property is not ``either yes or no'', but a group. 
+
+A property of a topological space is called an \textbf{invariant} if any two homeomorphic spaces share the property. A \textbf{classification} of topological spaces would be a list of topological invariants such that any two spaces which share these invariants are homeomorphic. As of now, no such list is known. 
+
+\begin{myex}
+The 2-sphere is defined as the set:
+$$
+S^2:=\{(x,y,z)\in \mathbb{R}^3\mid x^2+y^2+z^2=1\}
+$$
+equipped with the subset topology inherited from $\mathbb{R}^3$.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+  \draw[gray,dashed] (2,0) arc (0:180:2cm and 0.7cm);
+  \draw[gray] (2,0) arc (0:-180:2cm and 0.7cm);
+  \draw[thick] (0,0) circle[radius=2cm];
+\end{tikzpicture}
+\end{center}
+
+The sphere has the property that all the loops at any point are homotopic, hence the fundamental group (at every point) of the sphere is the trivial group:
+$$
+\forall \, p \in S^2 : \pi_1(p) = 1:=\{[\gamma_e]\}.
+$$
+\end{myex}
+
+\begin{myex}
+The cylinder is defined as $C:=\mathbb{R}\times S^1$ equipped with the product topology.
+
+\begin{center}
+\begin{tikzpicture}
+  \draw[dashed] (-3.75,0) -- (-3,0);
+  \draw[dashed] (3,0) -- (3.75,0);
+  \draw[dashed] (-3.5,-1.5) -- (3.5,-1.5);
+  \draw[dashed] (-3.75,-3) -- (-3,-3);
+  \draw[dashed] (3,-3) -- (3.75,-3);
+  \draw[thick] (-3,0) -- (3,0);
+  \draw[thick] (-3,-3) -- (3,-3);
+  \draw[dashed,gray] (0,0) arc (90:-90:0.75cm and 1.5cm);
+  \draw[gray] (0,0) arc (90:270:0.75cm and 1.5cm);
+\end{tikzpicture}
+\end{center}
+
+A loop in $C$ can either go around the cylinder (i.e.\ around its central axis) or not. If it does not, then it can be continuously deformed to a point (the identity loop). If it does, then it cannot be deformed to the identity loop (intuitively because the cylinder is infinitely long) and hence it is a homotopically different loop. The number of times a loop winds around the cylinder is called the \textbf{winding number}\index{winding number}. Loops with different winding numbers are not homotopic.
+
+Moreover, loops with different \textbf{orientations} are also not homotopic and hence we have:
+$$
+\forall \, p \in C : (\pi_1(p),\bullet) \cong_\mathrm{grp}(\mathbb{Z},+).
+$$
+\end{myex}
+
+\begin{myex}
+The 2-torus is defined as the set $T^2:=S^1\times S^1$ equipped with the product topology.
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+  \draw[thick] (-1,0) to[bend left] (1,0);
+  \draw[thick] (-1.2,.1) to[bend right] (1.2,.1);
+  \draw[gray] (100pt,0) arc (0:-180:100pt and 30pt);
+  \draw[gray,dashed] (100pt,0) arc (0:180:100pt and 30pt);
+  \draw[thick] (0,0) ellipse (100pt and 50pt);
+  \draw[gray,dashed]  (0,-1.75) arc (-90:90:0.3 and 0.75);
+  \draw[gray] (0,-1.75) arc (-90:-270:0.3 and 0.75);
+  \end{tikzpicture}
+\end{center}
+A loop in $T^2$ can intuitively wind around the cylinder-like part of the torus as well as around the hole of the torus. That is, there are two independent winding numbers and hence:
+$$
+\forall \, p \in T^2 : \pi_1(p) \cong_\mathrm{grp}\mathbb{Z}\times \mathbb{Z},
+$$
+where $\mathbb{Z}\times \mathbb{Z}$ is understood as a group under pairwise addition.
+\end{myex}
+%}}}
+
+\chapter{Topological manifolds}%{{{
+
+%}}}
+
+\chapter{Differentiable manifolds}%{{{
+
+%}}}
+
+\chapter{Lie groups and their Lie algebras}%{{{
+
+%}}}
+
+\chapter{Construction of \emph{SE(3)}}%{{{
+
+%}}}
 
 \onlyinsubfile{
 \bibliography{bibliography} %Same name as .bib
