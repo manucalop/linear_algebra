@@ -590,140 +590,6 @@ where $\sim$ is a ``suitable'' equivalence relation on $\mathcal{A}$.
 
 %}}}
 
-\chapter{Algebraic structures}%{{{
-\section{Group}
-\begin{mydef}
-  A \emph{group} $(G,\bullet)$ is a set $G$ equipped with a map
-  \begin{align*}
-    \bullet\ :\ &G \times G \rightarrow G\\
-                &(g_1, g_2) \mapsto g_1 \bullet g_2
-  \end{align*}
-  that satisfies $ANI$ (Associative, Neutral element and Inverse element). If the map is commutative $(CANI)$, the group is said to be commutative or abelian.
-\end{mydef}
-\section{Ring}
-\begin{mydef}
-  A \emph{ring} $(R, +, \cdot )$ is a set $R$ equipped with two maps
-  \begin{align*}
-    +      &:\ R \times R \rightarrow R\\
-    \cdot\ &:\ R \times R \rightarrow R\\
-  \end{align*}
-  that satisfies $C^{+}A^{+}N^{+}I^{+}$ for $R$ and $A^{\cdot}N^{\cdot}D^{\cdot}_{+}$  for $R\setminus \{0\}$. Where $D^{\cdot}_+$ means $\cdot$ is distributive wrt $+$.
-\end{mydef}
-
-\section{Field}
-\begin{mydef}
-  A \emph{field} (algebraic field) $(K, +, \cdot )$ is a set $K$ equipped with two maps
-  \begin{align*}
-    +      &:\ K \times K \rightarrow K\\
-    \cdot\ &:\ K \times K \rightarrow K\\
-  \end{align*}
-  that satisfies $C^{+}A^{+}N^{+}I^{+}$ for $K$ and $C^{\cdot}A^{\cdot}N^{\cdot}I^{\cdot}D^{\cdot}_{+}$ for $K\setminus \{0\}$ 
-\end{mydef}
-\section{Module}
-\begin{mydef}
-  A \emph{R-module} $(M, \oplus, \odot )$ over a ring $(R, +, \cdot)$ is a set $M$ equipped with the maps
-  \begin{align*}
-    \oplus      :\ &M \times M \rightarrow M\\
-    \odot       :\ &R \times M \rightarrow M\\
-                &\ r \odot m \mapsto r\cdot m\\
-  \end{align*}
-  that satisfies $C^{\oplus}A^{\oplus}N^{\oplus}I^{\oplus}$ and $AD^{\odot}_+D^\odot_{\oplus}U^{\odot}$. $U$ stands for unitary.
-\end{mydef}
-\section{Vector space}
-\begin{mydef}
-  A \emph{K-vector space} $(V, \oplus, \odot )$ over a field $(K,+,\cdot)$ is a set $V$ equipped with the maps
-  \begin{align*}
-    \oplus  :\ &V \times V \rightarrow V\\
-    \odot   :\ &K \times V \rightarrow V\\
-            &\ k \odot v \mapsto k\cdot v\\
-  \end{align*}
-  that satisfies $C^{\oplus}A^{\oplus}N^{\oplus}I^{\oplus}$ and $AD^{\odot}_+D^\odot_{\oplus}U^{\odot}$. A module is a vector space structure over a ring, i.e. non-commutative $\cdot$.
-\end{mydef}
-\begin{mydef}
-  $U \subset V$ is a vector subspace if $\forall u, u_1, u_2 \in U$  
-  \begin{align*}
-    &u_1 \oplus u_2 \in U\\
-    &\lambda \odot u \in U
-  \end{align*}
-\end{mydef}
-
-%}}}
-
-\chapter{Linear maps}%{{{
-  \section{Linear Map}
-  \begin{mydef}
-    Let $(V,\oplus,\odot),(W,\boxplus,\boxdot)$ be vector spaces over the same field $(K, +,\cdot)$. A map $f : V \rightarrow W$ is linear if
-    \begin{align*}
-      & \forall v_1, v_2 \in V && f(v_1 \oplus v_2) = f(v_1) \boxplus f(v_2)\\
-      & \forall \lambda \in K,\ v\in V && f(\lambda \odot V) = \lambda \boxdot f(v)
-    \end{align*}
-  \end{mydef}
-  \begin{mydef}
-    Linear maps are the structure-preserving maps of vector spaces, i.e. the vector-space homomorphisms. The set containing all linear maps is defined as:
-    $$
-    Hom(V,W) := \{ f : V \tilde{\longrightarrow} W\}
-    $$
-  \end{mydef}
-  \begin{mydef}
-    $(Hom(V,W), +_H, \cdot_H)$ can be made into a vector space by inducing the operators from $W$.
-  \end{mydef}
-  \begin{mydef}
-    A linear map is called endomorphism if $V=W$
-  \end{mydef}
-  \begin{mydef}
-    A bijective linear map is called a vector space isomorphism
-    $$
-    V \cong_{vec} W \Leftrightarrow \exists f : V \tilde{\longrightarrow} W \mid f \text{ bijective}
-    $$
-  \end{mydef}
-  \subsection*{Terminology}
-  \begin{mydef}
-    Endomorphisms $\equiv End(V) := Hom(V,V)$
-  \end{mydef}
-  \begin{mydef}
-    Automorphisms $\equiv Aut(V) := End(V)$ invertible.
-  \end{mydef}
-  \begin{mydef}
-    Dual vector space $\equiv V^* := Hom(V,K)$
-  \end{mydef}
-
-  \section{Linear independence. Basis}
-  \begin{mydef} 
-    Let $V$ be a vector space. Then, $S = \lbrace{s_1, \ldots, s_n \rbrace}\subseteq V$ is \textbf{linearly independent} if the linear combination of the vectors $s_i$ is only degenerate for the degenerate linear combination. Mathematically,
-    $$
-    \sum_{i=1}^n \lambda_i s_i = 0, \lambda_i \in K \Rightarrow \lambda_i = 0, \forall i = 1, \ldots, n
-    $$
-  \end{mydef} 
-  \begin{mydef}
-    $S\subset V$ is a \textbf{generating system} iff
-    $$
-    \forall v \in V\ \exists \lbrace \lambda_1, \ldots, \lambda_n \rbrace : \sum_{i=1}^n \lambda_i s_i = v
-    $$
-    which is denoted by $V = \langle S \rangle$
-  \end{mydef}
-  \begin{mydef}
-    A linearly independent generating system is called a \textbf{basis}.
-  \end{mydef} 
-  \subsection{Change of basis}
-
-  \section{Kernel and image of a linear map}
-  \begin{mydef}
-    Let $f:V\rightarrow W$ be a linear map. Then, its \textbf{kernel} is defined as:
-    $$
-      Ker(f) := x \in V : f(x) = 0
-    $$
-    The kernel $Ker(f)$ and image $Im(f)$ are vector subspaces of $V$ and $W$ respectively, with
-    $$
-    dim(Ker(f)) + dim(Im(f)) = dim(V)
-    $$
-  \end{mydef} 
-
-%}}}
-
-\chapter{Multilinear maps: Tensors}%{{{
-
-%}}}
-
 \chapter{Topological spaces}%{{{
 
 \section{Topology}
@@ -894,6 +760,9 @@ $$
 
 \begin{myex}
 If $M$ is equipped with the discrete topology, or $N$ with the chaotic topology, then any map $\phi: M \to N$ is continuous. 
+\end{myex}
+\begin{myex}
+  Continuity with the standard topology happens to be the undergraduate $(\epsilon, \delta)$ definition. 
 \end{myex}
 
 \begin{mydef}
@@ -1339,10 +1208,319 @@ where $\mathbb{Z}\times \mathbb{Z}$ is understood as a group under pairwise addi
 %}}}
 
 \chapter{Topological manifolds}%{{{
+Roughly, a topological manifold is a topological space that locally looks like $\mathbb{R}^d$.
+\begin{mydef}
+  A paracompact Housdorff topological space $(M, \mathcal{O})$ is called a d-dimensional (topological) \textbf{manifold} if for every $p\in M: \exists p \in U \in \mathcal{O}$ and a homeomorphism $x:U \rightarrow x(U) \subseteq \mathbb{R}^d$
+\end{mydef}
+\begin{mydef}
+  Let $(M,\mathcal{O})$ be a d-dimensional topological manifold and $N \subset M$. Then, $(N,\mathcal{O}\mid_N)$ is a \textbf{submanifold} of $(M,\mathcal{O})$ if it is a manifold in its own right.
+\end{mydef}
+\begin{mydef}
+  Let $(M,\mathcal{O}_M)$ and $(N,\mathcal{O}_N)$ be a topological manifolds. Then, $(M\times N, \mathcal{O}_M \times \mathcal{O}_N)$ is a manifold of dimension $dim(M) + dim(N)$ called the \textbf{product manifold}. ``We attach a copy of the second manifold to each point of the first''.
+\end{mydef}
+\section{Viewing manifolds from atlases}
+\begin{mydef}
+  Let $(M,\mathcal{O})$ be a d-dimensional topological manifold. Then, a pair $(U,x)$ where $U\in \mathcal{O}$ and $x : U \rightarrow x(U) \subseteq \mathbb{R}^d$ is a \textbf{chart} of the manifold. The component functions of $x$,
+$$ 
+\begin{aligned}
+  x_i :& U   & \to     & \mathbb{R}\\
+       & p   & \mapsto & proj_i(x(p))
+\end{aligned} 
+$$
+are called the \textbf{coordinates} of the point $p$ with respect to the chart $(U,x)$.
+\end{mydef}
+\begin{remark}
+  There exists a set of charts $\mathcal{A}$ such that $\bigcup U_i = M,\ (U_i, x_i) \in \mathcal{A}$. $\mathcal{A}$ is called \textbf{atlas}.
+\end{remark}
+
+\begin{mydef}
+  Two charts $(U,x)$ and $(V,y)$ are called $\boldsymbol{\mathcal{C}^0}$\textbf{-compatible} if either
+  \begin{enumerate}
+    \item $U\cap V = \emptyset$
+    \item $U\cap V \neq \emptyset : y \circ x^{-1}$ is continuous.
+  \end{enumerate}
+% Note that $y\circ x^{-1}$ is a map from a subset of $\R^d$ to a subset of $\R^d$.
+% \bse
+% \begin{tikzcd}
+% & U\cap V \se M \ar[ldd,"x"'] \ar[rdd,"y"]&\\
+% &&&\\
+% x(U\cap V) \se \R^d \ar[rr,"y\circ x^{-1}"']& & y(U\cap V)\se \R^d
+% \end{tikzcd}
+% \ese
+\end{mydef}
+
+\begin{remark}
+  The map $y \circ x^{-1}: \mathbb{R}^d \to \mathbb{R}^d$ is also called the \textbf{coordinate change chart}.
+\end{remark}
+
+\begin{remark}
+  Continuity can be described at a topological level, but not differentiability. For that we have to use the chart-transition maps.
+\end{remark}
+
+%}}}
+
+\chapter{Algebraic structures}%{{{
+\section{Group}
+\begin{mydef}
+  A \emph{group} $(G,\bullet)$ is a set $G$ equipped with a map
+  \begin{align*}
+    \bullet\ :\ &G \times G \rightarrow G\\
+                &(g_1, g_2) \mapsto g_1 \bullet g_2
+  \end{align*}
+  that satisfies $ANI$ (Associative, Neutral element and Inverse element). If the map is commutative $(CANI)$, the group is said to be commutative or abelian.
+\end{mydef}
+\section{Ring}
+\begin{mydef}
+  A \emph{ring} $(R, +, \cdot )$ is a set $R$ equipped with two maps
+  \begin{align*}
+    +      &:\ R \times R \rightarrow R\\
+    \cdot\ &:\ R \times R \rightarrow R\\
+  \end{align*}
+  that satisfies $C^{+}A^{+}N^{+}I^{+}$ for $R$ and $A^{\cdot}N^{\cdot}D^{\cdot}_{+}$  for $R\setminus \{0\}$. Where $D^{\cdot}_+$ means $\cdot$ is distributive wrt $+$.
+\end{mydef}
+
+\section{Field}
+\begin{mydef}
+  A \emph{field} (algebraic field) $(K, +, \cdot )$ is a set $K$ equipped with two maps
+  \begin{align*}
+    +      &:\ K \times K \rightarrow K\\
+    \cdot\ &:\ K \times K \rightarrow K\\
+  \end{align*}
+  that satisfies $C^{+}A^{+}N^{+}I^{+}$ for $K$ and $C^{\cdot}A^{\cdot}N^{\cdot}I^{\cdot}D^{\cdot}_{+}$ for $K\setminus \{0\}$ 
+\end{mydef}
+\section{Module}
+\begin{mydef}
+  A \emph{R-module} $(M, \oplus, \odot )$ over a ring $(R, +, \cdot)$ is a set $M$ equipped with the maps
+  \begin{align*}
+    \oplus      :\ &M \times M \rightarrow M\\
+    \odot       :\ &R \times M \rightarrow M\\
+                &\ r \odot m \mapsto r\cdot m\\
+  \end{align*}
+  that satisfies $C^{\oplus}A^{\oplus}N^{\oplus}I^{\oplus}$ and $AD^{\odot}_+D^\odot_{\oplus}U^{\odot}$. $U$ stands for unitary.
+\end{mydef}
+\section{Vector space}
+\begin{mydef}
+  A \emph{K-vector space} $(V, \oplus, \odot )$ over a field $(K,+,\cdot)$ is a set $V$ equipped with the maps
+  \begin{align*}
+    \oplus  :\ &V \times V \rightarrow V\\
+    \odot   :\ &K \times V \rightarrow V\\
+            &\ k \odot v \mapsto k\cdot v\\
+  \end{align*}
+  that satisfies $C^{\oplus}A^{\oplus}N^{\oplus}I^{\oplus}$ and $AD^{\odot}_+D^\odot_{\oplus}U^{\odot}$. A module is a vector space structure over a ring, i.e. non-commutative $\cdot$.
+\end{mydef}
+\begin{mydef}
+  $U \subset V$ is a vector subspace if $\forall u, u_1, u_2 \in U$  
+  \begin{align*}
+    &u_1 \oplus u_2 \in U\\
+    &\lambda \odot u \in U
+  \end{align*}
+\end{mydef}
+
+%}}}
+
+\chapter{Linear maps}%{{{
+  \section{Linear Map}
+  \begin{mydef}
+    Let $(V,\oplus,\odot),(W,\boxplus,\boxdot)$ be vector spaces over the same field $(K, +,\cdot)$. A map $f : V \rightarrow W$ is linear if
+    \begin{align*}
+      & \forall v_1, v_2 \in V && f(v_1 \oplus v_2) = f(v_1) \boxplus f(v_2)\\
+      & \forall \lambda \in K,\ v\in V && f(\lambda \odot V) = \lambda \boxdot f(v)
+    \end{align*}
+  \end{mydef}
+  \begin{mydef}
+    Linear maps are the structure-preserving maps of vector spaces, i.e. the vector-space homomorphisms. The set containing all linear maps is defined as:
+    $$
+    Hom(V,W) := \{ f : V \tilde{\longrightarrow} W\}
+    $$
+  \end{mydef}
+  \begin{mydef}
+    $(Hom(V,W), +_H, \cdot_H)$ can be made into a vector space by inducing the operators from $W$.
+  \end{mydef}
+  \begin{mydef}
+    A linear map is called endomorphism if $V=W$
+  \end{mydef}
+  \begin{mydef}
+    A bijective linear map is called a vector space isomorphism
+    $$
+    V \cong_{vec} W \Leftrightarrow \exists f : V \tilde{\longrightarrow} W \mid f \text{ bijective}
+    $$
+  \end{mydef}
+  \subsection*{Terminology}
+  \begin{mydef}
+    Endomorphisms $\equiv End(V) := Hom(V,V)$
+  \end{mydef}
+  \begin{mydef}
+    Automorphisms $\equiv Aut(V) := End(V)$ invertible.
+  \end{mydef}
+  \begin{mydef}
+    Dual vector space $\equiv V^* := Hom(V,K)$. Heavily used. $V^*$ is the set of linear functions.
+  \end{mydef}
+
+  \section{Linear independence. Basis}
+  \begin{mydef} 
+    Let $V$ be a vector space. Then, $S = \lbrace{s_1, \ldots, s_n \rbrace}\subseteq V$ is \textbf{linearly independent} if the linear combination of the vectors $s_i$ is only degenerate for the degenerate linear combination. Mathematically,
+    $$
+    \sum_{i=1}^n \lambda_i s_i = 0, \lambda_i \in K \Rightarrow \lambda_i = 0, \forall i = 1, \ldots, n
+    $$
+  \end{mydef} 
+  \begin{mydef}
+    $S\subset V$ is a \textbf{generating system} iff
+    $$
+    \forall v \in V\ \exists \lbrace \lambda_1, \ldots, \lambda_n \rbrace : \sum_{i=1}^n \lambda_i s_i = v
+    $$
+    which is denoted by $V = \langle S \rangle$
+  \end{mydef}
+  \begin{mydef}
+    A linearly independent generating system is called a \textbf{basis}.
+  \end{mydef} 
+  \begin{remark}
+  One can choose arbitrary basis for $V$ and $V^*$. However, it's more economical to derive the basis on $V^*$ based on the choice of basis in $V$.
+  $$
+  \epsilon^a(e_b) = \delta^a_b
+  $$
+  This uniquely determines the choice of $\epsilon^1, \ldots, \epsilon^n$ for a given choice of $e_1, \ldots, e_n$. This is called a \textbf{dual basis} of $V$.
+  \end{remark}
+  \begin{myex}
+    Consider the 3rd degree polynomials. Then, a basis $\{e_0, e_1, e_2, e_3\} = \{1, x, x^2, x^3\}$ can be defined and a dual basis can be defined as  
+    $$
+    \{\epsilon^0,\epsilon^1,\epsilon^2,\epsilon^3\} : \epsilon^a = \frac{1}{a!}\partial^a (\cdot) \mid_{x=0} = \delta^a_b
+    $$
+  \end{myex}
+  \subsection{Change of basis}
+
+  \section{Kernel and image of a linear map}
+  \begin{mydef}
+    Let $f:V\rightarrow W$ be a linear map. Then, its \textbf{kernel} is defined as:
+    $$
+      Ker(f) := x \in V : f(x) = 0
+    $$
+    The kernel $Ker(f)$ and image $Im(f)$ are vector subspaces of $V$ and $W$ respectively, with
+    $$
+    dim(Ker(f)) + dim(Im(f)) = dim(V)
+    $$
+  \end{mydef} 
+
+%}}}
+
+\chapter{Multilinear maps: Tensors}%{{{
+\begin{mydef}
+  Let $(V,+,\cdot)$ be a K-vector space. A $(p,q)-$tensor $T$ over $V$ is a multilinear map
+  $$
+  T: \underbrace{V^* \times \cdots \times V^*}_{\text{p copies}} \times \underbrace{V \times \cdots \times V}_{\text{q copies}} \tilde{\longrightarrow} K
+  $$
+\end{mydef}
+\begin{myex}
+  $$
+  \begin{aligned}
+  &\varphi \in V^* \Leftrightarrow \varphi : V \tilde{\longrightarrow} K \Leftrightarrow \varphi \text{ is a $(0,1)-$tensor.}\\
+  & v \in V \Leftrightarrow v \in \left( V^*\right)^* \Leftrightarrow v: V^* \tilde{\longrightarrow} K \Leftrightarrow v \text{ is a $(1,0)-$tensor.}
+  \end{aligned}
+  $$
+  In addition, linear maps are $(1,1)-$tensor. An inner product on a vector space is a $(0,2)-$tensor. The ``inverse'' or dual inner product is a $(2,0)-$tensor.
+\end{myex}
+
+\section{Components of tensors}
+\begin{mydef}
+  Let T be an $(p,q)-$tensor over a finite-dimensional vector space V. Then, define the $(p+q)^{dim(V)}$ real numbers.
+  $$
+  T^{i_1,\ldots, i_p}{}_{j_1, \ldots, j_q} := T(\epsilon^{i_1}, \ldots, \epsilon^{i_p}, e^{j_1}, \ldots, e^{j_q}) \in K
+  $$
+\end{mydef}
+\subsection{Reconstruction of T from its components}
+\begin{myex}
+  T is a $(1,1)-$tensor. Then,
+  $$
+  T^i{}_j := T(\epsilon^i, e_j)
+  $$
+  thus,
+  $$
+  T(\varphi,v) = T(\sum_{i=1}^{dimV}\varphi_i \epsilon^i, \sum_{j=1}^{dimV}v^j e_j) = 
+  \sum_{i=1}^{dimV}\sum_{j=1}^{dimV}\varphi_i v^j T(\epsilon^i,  e_j) =: \varphi_i v^j T^i{}_j 
+  $$
+  where the last term is written in Einstein summation convention, where up-down matching indices are summed over.
+\end{myex}
 
 %}}}
 
 \chapter{Differentiable manifolds}%{{{
+\section{Adding structure by refining the (maximal) topological atlas}
+\begin{mydef}
+  Let $(M, \mathcal{O})$ be a manifold. An atlas $\mathcal{A}$ is called a $\clubsuit-$\textbf{atlas} if any two charts $(U,x), (V,y) \in \mathcal{A}$ are $\clubsuit-$compatible. In other words, either:
+  \begin{itemize}
+    \item $U\cap V = \emptyset$
+    \item $U\cap V \neq \emptyset \Rightarrow y\circ x^{-1}$ must be $\clubsuit$ as a $\mathbb{R}^d \to \mathbb{R}^d$ map.
+  \end{itemize}
+  Where $\clubsuit$ can be:
+  \begin{itemize}
+    \item $C^0$
+    \item $C^k$: The transition maps are k-times continuously differentiable (traditional def.)
+    \item $C^\infty$: Smooth.
+    \item $C^\omega$: Real analytic (Can be Taylor expanded).
+    \item Complex: Transition functions satisfy the Cauchy-Riemman equations.
+  \end{itemize}
+\end{mydef}
+\begin{theorem}
+  Any maximal $C^{k\geq 1}-$atlas contains a $C^\infty -$atlas. Two maximal $C^k-$atlasses that contain the same $C^\infty-$atlas are identical. This implies that you do not need to distinguish between $C^{k\geq 1}$ and $C^\infty$ in the previous sense.
+\end{theorem}
+
+\begin{mydef}
+  A $C^k-$manifold is a triple $(M, \mathcal{O}, \mathcal{A})$ where $(M,\mathcal{O})$ is a topological manifold and $\mathcal{A}$ is a $C^k-$atlas.
+\end{mydef}
+
+\begin{mydef}
+  Let $\phi : M \to N$ be a map, where $(M, \mathcal{O}_M, \mathcal{A}_M)$ and $(N, \mathcal{O}_N, \mathcal{A}_N)$ are $C^k-$manifolds. Then, $\phi$ is called \textbf{differentiable} at a point $p \in M$ if for some $(U,x)\in \mathcal{A}_M$ with $p\in U$ and some chart $(V,y) \in \mathcal{A}_N$ with $\phi(p)\in V$ the map $y\circ \phi \circ x^{-1}$ is $C^k$ as a map from $\mathbb{R}^{dim(M)} \to \mathbb{R}^{dim(N)}$.
+\end{mydef}
+\begin{mydef}
+  If $\phi M \to N$ is bijective and both $\phi$ and $\phi^{-1}$ are $C^\infty$, then $\phi$ is called \textbf{diffeomorphism}. They are the structure preserving maps over differentiable manifolds. 
+\end{mydef}
+\begin{mydef}
+  $(M, \mathcal{O}_M, \mathcal{A}_M)$ and $(N, \mathcal{O}_N, \mathcal{A}_N)$ are called diffeomorphic if there exist a diffeomorphism between them.
+  $$
+  M \cong_{diff} N \equiv  (M, \mathcal{O}_M, \mathcal{A}_M) \cong_{diff}(N, \mathcal{O}_N, \mathcal{A}_N)
+  $$
+\end{mydef}
+\begin{remark}
+  It is custom to consider diffeomorphic smooth manifolds to be the same.
+\end{remark}
+\begin{remark}
+  The key feature of the differentiable manifolds is that exists a \textbf{tangent} (vector) \textbf{space} at each point of the manifold.
+\end{remark}
+
+\section{Tangent spaces to a manifold}
+\begin{mydef}
+  Let M be a smooth manifold. Then, we can construct the vector space over $\mathbb{R}: (C^\infty(M), +, \cdot)$ where the operators are inherited from $\mathbb{R}$ and $C^\infty(M)$ is the set of all smooth functions on the manifold $f:M\to \mathbb{R}$.
+\end{mydef}
+\begin{mydef}
+  Let $\gamma : \mathbb{R} \to M$ be a smooth curve through a point $p\in M$. Without loss of generality (w.l.o.g.), we may arrange for $p = \gamma(0)$. \textbf{ The directional derivative operator} at $p$ along the curve $\gamma$ is a linear map:
+  $$
+  \begin{aligned}
+    X_{\gamma, p} : C^\infty(M) &\to \mathbb{R}\\
+    \quad f    &\mapsto (\underbrace{f \circ \gamma}_{\mathbb{R}\to \mathbb{R}})'(0)
+  \end{aligned}
+  $$
+  In differential geometry, $X_{\gamma, p}$ is usually called the \textbf{tangent vector} to the curve $\gamma$ at the point $p\in M$. It is also called the velocity of $\gamma$ at $p$.
+\end{mydef}
+
+\begin{mydef}
+  The \textbf{tangent vector space} is the set
+  $$
+  T_pM:=\left\{ X_{\gamma, p}\ \forall\ \gamma \text{ smooth curves through } p\right\}
+  $$
+  equipped with:
+  $$
+  \begin{aligned}
+    \oplus &: T_pM \times T_pM \to T_pM\\
+    \odot  &: \mathbb{R} \times T_pM \to T_pM
+  \end{aligned}
+  $$
+  We can directly inherit the operators from $\mathbb{R}$.
+  $$
+  \begin{aligned}
+    (X_{\gamma,p} \oplus X_{\delta,p})(f) &:= X_{\gamma, p}(f) + X_{\delta, p}(f)\\
+    (\lambda \odot X_{\gamma,p})(f) &:= \lambda \cdot X_{\gamma, p}(f)
+  \end{aligned}
+  $$
+\end{mydef}
 
 %}}}
 
