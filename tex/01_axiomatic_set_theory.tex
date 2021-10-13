@@ -1,6 +1,157 @@
 \documentclass[root.tex]{subfiles}
 \begin{document}
 
+\chapter{Foundations of Mathematics}
+Mathematics is the language of science. Thus, it is not designed to provide a mean of easygoing communication. Its main purpose is to test our own understanding of what we are trying to write, and to fully explore its implications. The spirit of mathematics can be summarized by the words of Ludwig Wittgenstein, who said: \emph{What we cannot speak about clearly we must pass over in silence}. Indeed, if we have a notion that we can't express in mathematical language, that is usually an indicator that some aspects have not been well understood. In this chapter, we will start with the first building block of our mathematical language: Logic. Propositional and predicate logic will allow us to write the axioms upon which all modern mathematics can be built. 
+
+\section{Propositional logic}%{{{
+The key notion of propositional logic is a proposition. 
+\begin{mydef}
+  A \textbf{proposition} $p$ is a variable\footnote{By this we mean a formal expression, with no extra structure assumed.} that can take the values true (T) or false (F). No other. 
+\end{mydef}
+This is what a proposition is, from the point of view of propositional logic. In particular, it is not the task of propositional logic to decide whether a complex statement of the form: \emph{there is extra-terrestrial life} is true or not. Propositional logic already deals with the complete proposition and it just assumes that is either true or false. Certainly, one can build new propositions from given ones by means of \textbf{logical operators}. The simplest kind of logical operators are unary operators. A unary operator takes one proposition and makes from it a new proposition. We define them in the following table:
+    \begin{table}[h]
+      \centering
+      \begin{tabular}{c||c|c|c|c}
+        $p$ & $\neg p$ & $\mathrm{id}(p)$ & $\top p$ & $\bot p$ \\
+        \hline
+        \rule{0pt}{12pt} F & T & F & T & F\\
+                         T & F & T & T & F
+      \end{tabular}\qquad
+      \begin{tabular}{ll}
+        $\neg$ & NOT\\
+        $id$   & Identity\\
+        $\top$ & Tautology\\
+        $\bot$ & Contradiction
+      \end{tabular}
+      \caption{Unary operators}
+    \end{table}
+
+One can quickly check that, if $p$ can only be true or false, these operators cover all the possibilities to define a unary operator. The next step is to consider binary operators, i.e. operators that take two propositions and return a new one. We have 16 binary operators in total, but we draw some interesting ones in the following table:
+
+    \begin{table}[h]
+      \centering
+      \begin{tabular}{c|c||c|c|c|c|c}
+        $p$ & $q$ & $p\land q$ & $p\lor q$ & $p\veebar q$ & $p \Rightarrow q$ & $p \Leftrightarrow q$ \\
+        \hline
+          \rule{0pt}{12pt} F & F & F & F & F & T & T\\
+                           F & T & F & T & T & T & F\\
+                           T & F & F & T & T & F & F\\
+                           T & T & T & T & F & T & T
+      \end{tabular}\quad
+      \begin{tabular}{ll}
+        $\land$           & AND\\
+        $\lor$            & OR\\
+        $\veebar$         & EX-OR\\
+        $\uparrow$        & NAND (not AND)\\
+        $\Rightarrow$     & Implication\\
+        $\Leftrightarrow$ & Equivalence
+      \end{tabular}
+      \caption{Some binary operators}
+    \end{table}
+
+\begin{remark}
+  All higher order operators can be constructed from the single NAND operator.
+\end{remark}
+
+We point out the importance of the implication arrow, which is frequently ill-understood. The implication arrow is a binary operator that takes two propositions and constructs a new one that, in total, is true or false, as defined in the previous table.
+\begin{remark}
+  From the implication operator, one can conclude anything based on false assumptions, also known as ''ex falso quodlibet''.
+\end{remark}
+Then one may wonder why on Earth would you define the implication arrow like this. The answer is hidden in the following theorem: 
+\begin{theorem}
+  Let $p$, $q$ be propositions. Then $(p \Rightarrow q) \Leftrightarrow ((\neg q)\Rightarrow (\neg p))$.
+\end{theorem}
+\newpage
+\begin{proof}
+  We need only to construct the truth table and see that the two last propositions are identical:
+    \begin{table}[h]
+      \centering
+      \begin{tabular}{c|c||c|c|c|c}
+        $p$ & $q$ & $\neg p$ & $ \neg q$ & $p \Rightarrow q$ & $(\neg q) \Rightarrow (\neg p)$ \\
+        \hline
+          \rule{0pt}{12pt} F & F & T & T & T & T\\
+                           F & T & T & F & T & T\\
+                           T & F & F & T & F & F\\
+                           T & T & F & F & T & T
+      \end{tabular}
+    \end{table}
+
+\end{proof}
+
+\begin{corollary}
+  We can prove assertions by way of contradiction. E.g. assume that $p$ is true and we want to prove that $q$ is true. Then, what we can do instead, and is fully equivalent, is to assume that what we want to prove is not true, and then prove that the assumption is not true. Then we say we have a contradiction and $q$ must have been true.
+\end{corollary}
+
+%}}}
+
+\section{Predicate logic}%{{{
+\begin{mydef}
+  A \textbf{predicate} is (informally) a proposition-valued function of some variables(s). In particular, a predicate of two variables is called a relation.
+\end{mydef}
+
+For example, $Q(x,y)$ is a proposition which value depends on the variables $x$ and $y$. Just like for propositional logic, it is not the task of predicate logic to examine how predicates are built from the variables on which they depend. Since the notions of set theory have not been yet defined, we leave it completely open, and simply consider $x$ and $y$ formal variables, with no extra conditions imposed. As with propositions, we can construct new predicates from given ones by means of the operators defined in the previous section. For example, we might have:
+\begin{myex}
+  $Q(x,y,z):\Leftrightarrow P(x) \land R(y,z)$
+\end{myex}
+
+More interestingly, we can construct a new proposition from a given predicate by using \emph{quantifiers}\footnote{A quantifier is a language object that specify the elements that satisfy a given predicate.}.
+Let $P(x)$ be a predicate. Then, one can define the proposition
+$$p:\Leftrightarrow \forall x : P(x)$$
+by using the \textbf{universal quantifier} $\forall$. This means that the proposition $p$ is true $iff$, for every preposition $x$, the predicate $P(x)$ is true. $p$ is false otherwise.
+
+Then, we can define define the \textbf{existential quantifier} $\exists$  and the \textbf{unique existential quantifier} $\exists !$ by: 
+$$
+\exists \, x : P(x) : \Leftrightarrow \neg (\forall \, x : \neg P(x)).
+$$
+$$
+\exists ! \, x : P(x) :\Leftrightarrow (\exists \, x : \forall \, y : P(y) \Leftrightarrow x=y)
+$$
+%}}}
+
+\section{Axiomatic System and theory of proofs}%{{{
+
+\begin{mydef}
+  An \textbf{axiom} $a$ or assumption is a proposition $p$ taken to be true, i.e. a tautology of $p$ ($a=T(p)$).
+\end{mydef}
+
+\begin{mydef}
+  An \textbf{axiomatic system} is a finite sequence of axioms $a_1,a_2,\ldots,a_N$.
+\end{mydef}
+
+\begin{mydef}
+  A \textbf{proof} of a proposition $p$ within an axiomatic system $a_1,a_2,\ldots,a_N$ is a finite sequence of propositions $q_1,q_2,\ldots,q_M$ such that $q_M=p$ and for any $1\leq j \leq M$ one of the following is satisfied:
+\begin{enumerate}
+\item[(A)] $q_j$ is a proposition from the list of axioms;
+\item[(T)] $q_j$ is a tautology;
+\item[(M)] $\exists \, 1\leq m,n <j : (q_m\land q_n \Rightarrow q_j)$ is true. This is called modus ponens or deduction rule.
+\end{enumerate}
+\end{mydef}
+\begin{remark}
+
+If $p$ can be proven within an axiomatic system $a_1,a_2,\ldots,a_N$, we write:
+$$
+a_1,a_2,\ldots,a_N \vdash p
+$$
+and we read ``$a_1,a_2,\ldots,a_N$ proves $p$''.
+\end{remark}
+
+\begin{mydef}
+An axiomatic system $a_1,a_2,\ldots,a_N$ is said to be \emph{consistent} if there exists a proposition $q$ which cannot be proven from the axioms.
+$$
+\exists \, q : \neg (a_1,a_2,\ldots,a_N \vdash q).
+$$
+\end{mydef}
+
+\begin{theorem}
+  Propositional logic is consistent.
+\end{theorem}
+
+\begin{theorem}[Godel]
+Any axiomatic system powerful enough to encode elementary arithmetic is either inconsistent or contains an undecidable proposition, i.e.\ a proposition that can be neither proven nor disproven within the system.
+\end{theorem}
+%}}}
+
 \chapter{Axiomatic set theory}%{{{
 
 Any space, such as the physical space, is a set "of points" equipped with further structure. But what precisely is a set? Well, one can think of a set as a collection of elements, but that raises the question of what a collection is and what elements are. So certainly we need to do better and, as a fundamental problem, if we start writing a book about mathematics whose pages are all empty yet, what could the first definition be? For a definition you need notions that you already have in order to define a new notion but, if you don't have any notion yet, how do you start? The trick is to start axiomatically, and to do so we will write axiomatic set theory. Again, this raises the question, in what language could you possibly do that? Then, we need another building block called propositional logic, which will allow us to write the axioms of set theory. 
